@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DialogueManager : MonoBehaviour
 {
+	public EventSystem eventSystem;
+
 	[HideInInspector] public Character speaker1; // Speaker on the left.
 	[HideInInspector] public Character speaker2; // Speaker on the right.
 
@@ -12,6 +15,11 @@ public class DialogueManager : MonoBehaviour
 	[HideInInspector] public SpeechBubble currentDialogue; // Current running line of dialogue.
 	[HideInInspector] public Image currentDialogueBG; // Current background for dialogue.
 	[HideInInspector] public Text currentDialogueText; // Current text for dialogue.
+
+	public Material speechMaterial;
+	public Material thinkingMaterial;
+
+	public int responseNum = -1;
 
 	public GameObject allDialogueGUI;
 	public Text dialogueText1GUI;
@@ -22,6 +30,9 @@ public class DialogueManager : MonoBehaviour
 	public Image speaker2GUI;
 	public Text speaker1Name;
 	public Text speaker2Name;
+
+	public GameObject responsesLayout;
+	public Button buttonTemplate;
 
 	private bool canSkip = false;
 	private float waitTime = 0.05f;
@@ -45,7 +56,10 @@ public class DialogueManager : MonoBehaviour
 		currentDialogue = firstDialogue;
 		currentSpeaker = currentDialogue.Speaker;
 
-		StartCoroutine(Write(currentDialogue.Dialogue));
+		if (currentDialogue.Responses.Count > 0)
+			StartCoroutine(WriteResponses(currentDialogue.Responses));
+		else
+			StartCoroutine(Write(currentDialogue.Dialogue));
 	}
 
 	// Used to advance dialogue that has no branches.
@@ -56,7 +70,10 @@ public class DialogueManager : MonoBehaviour
 			currentDialogue = currentDialogue.NextLines[0];
 			currentSpeaker = currentDialogue.Speaker;
 
-			StartCoroutine(Write(currentDialogue.Dialogue));
+			if (currentDialogue.Responses.Count > 0)
+				StartCoroutine(WriteResponses(currentDialogue.Responses));
+			else
+				StartCoroutine(Write(currentDialogue.Dialogue));
 		}
 		else
 		{
@@ -72,7 +89,11 @@ public class DialogueManager : MonoBehaviour
 			currentDialogue = currentDialogue.NextLines[responseNumber];
 
 			currentSpeaker = currentDialogue.Speaker;
-			StartCoroutine(Write(currentDialogue.Dialogue));
+
+			if (currentDialogue.Responses.Count > 0)
+				StartCoroutine(WriteResponses(currentDialogue.Responses));
+			else
+				StartCoroutine(Write(currentDialogue.Dialogue));
 		}
 		else
 		{
@@ -86,16 +107,18 @@ public class DialogueManager : MonoBehaviour
 		currentSpeaker = null;
 		currentDialogue = null;
 
-		allDialogueGUI.SetActive(false);
+		allDialogueGUI.GetComponent<Animator>().SetBool("Exit", true);
 	}
 
-	public void SwitchSpeaker()
+	public void SwitchSpeaker(bool isResponding)
 	{
 		Image oldBG = null;
 		try
 		{
 			oldBG = currentDialogueBG;
 			currentDialogueText.gameObject.SetActive(false);
+
+			if (responsesLayout.gameObject.activeSelf) responsesLayout.gameObject.SetActive(false);
 		} catch { }
 
 		if (currentSpeaker == speaker1)
@@ -115,16 +138,19 @@ public class DialogueManager : MonoBehaviour
 			oldBG.GetComponent<Canvas>().sortingOrder = 1;
 		}
 
-		currentDialogueText.gameObject.SetActive(true);
+		if (!isResponding) currentDialogueText.gameObject.SetActive(true);
+		else responsesLayout.gameObject.SetActive(true);
+
 		currentDialogueBG.gameObject.SetActive(true);
 		currentDialogueBG.GetComponent<Canvas>().sortingOrder = 2;
+		currentDialogueBG.material = (!isResponding) ? speechMaterial : thinkingMaterial;
 		currentDialogueBG.color = Color.white;
 	}
 
 	// Writes text to text box.
 	private IEnumerator Write(string text)
 	{
-		SwitchSpeaker();
+		SwitchSpeaker(false);
 		Text output = currentDialogueText;
 
 		canSkip = false;
@@ -141,9 +167,32 @@ public class DialogueManager : MonoBehaviour
 		canSkip = true;
 	}
 
+	private IEnumerator WriteResponses(List<string> responses)
+    {
+		SwitchSpeaker(true);
+		responseNum = -1;
+
+		Transform[] responseArray = responsesLayout.GetComponentsInChildren<Transform>();
+		foreach (Transform response in responseArray)
+        {
+			if (response.gameObject != responsesLayout)
+				Destroy(response.gameObject);
+        }
+
+		foreach (string response in responses)
+        {
+			Button newResponse = Instantiate(buttonTemplate, responsesLayout.transform);
+			newResponse.GetComponentInChildren<Text>().text = response;
+			newResponse.GetComponent<Response>().responseNum = responses.IndexOf(response);
+        }
+
+		yield return null;
+    }
+
     private void Awake()
     {
 		AllDialogue.Initialize();
+		eventSystem = EventSystem.current;
 
 		SetupDialogue(Characters.player, Characters.witch);
 		StartDialogue(AllDialogue.firstConversation);
@@ -161,7 +210,13 @@ public class DialogueManager : MonoBehaviour
 			}
 			else
 			{
-				AdvanceDialogue();
+				try
+				{
+					responseNum = eventSystem.currentSelectedGameObject.GetComponent<Response>().responseNum;
+				} catch { }
+
+				if (currentDialogueBG.material == speechMaterial) AdvanceDialogue();
+				else if (responseNum != -1) AdvanceDialogue(responseNum);
 			}
 		}
     }
