@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         target = player.GetComponent<Transform>();
         seeker = GetComponent<Seeker>();
         rb2 = GetComponent<Rigidbody2D>();
