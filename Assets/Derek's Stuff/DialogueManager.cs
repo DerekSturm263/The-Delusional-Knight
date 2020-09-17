@@ -112,12 +112,12 @@ public class DialogueManager : MonoBehaviour
 		if (oldBG != currentDialogueBG && oldBG != null)
 		{
 			oldBG.color = Color.grey;
-			oldBG.gameObject.layer = 0;
+			oldBG.GetComponent<Canvas>().sortingLayerID = 0;
 		}
 
 		currentDialogueText.gameObject.SetActive(true);
 		currentDialogueBG.gameObject.SetActive(true);
-		currentDialogueBG.gameObject.layer = 1;
+		currentDialogueBG.GetComponent<Canvas>().sortingLayerID = 0;
 	}
 
 	// Writes text to text box.
