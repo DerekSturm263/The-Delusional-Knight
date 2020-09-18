@@ -6,6 +6,9 @@ TagManager:
   tags:
   - MCTestWall
   - MCTestAI
+  - UnloadOnCutscene
+  - DialogueManager
+  - Fade
   layers:
   - Default
   - TransparentFX

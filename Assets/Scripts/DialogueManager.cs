@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -44,10 +45,19 @@ public class DialogueManager : MonoBehaviour
 
 	private bool singlePerson;
 
+	public Action EndAction;
+
+	// Simplified way to begin dialogue.
 	public void WriteDialogue(SpeechBubble line, Character character1, Character character2 = null)
 	{
 		SetupDialogue(character1, character2);
 		StartDialogue(line);
+	}
+
+	// Sets an action that gets ran when the dialogue is finished.
+	public void SetEndMethod(Action endAction)
+	{
+		EndAction = endAction;
 	}
 
 	// Start with this piece of code to set who’s talking.
@@ -110,6 +120,7 @@ public class DialogueManager : MonoBehaviour
 		else
 		{
 			StopDialogue();
+			EndAction();
 		}
 	}
 
@@ -130,6 +141,7 @@ public class DialogueManager : MonoBehaviour
 		else
 		{
 			StopDialogue();
+			EndAction();
 		}
 	}
 
@@ -264,8 +276,6 @@ public class DialogueManager : MonoBehaviour
     {
 		AllDialogue.Initialize();
 		eventSystem = EventSystem.current;
-
-		WriteDialogue(AllDialogue.firstConversation, Characters.player, Characters.witch);
     }
 
     private void Update()
