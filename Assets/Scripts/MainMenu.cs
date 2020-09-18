@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Movement");
+        Debug.Log("Start Game");
     }
     public void QuitGame()
     {
@@ -17,6 +18,8 @@ public class MainMenu : MonoBehaviour
 
     public void NextCredit()
     {
+        SceneManager.LoadScene("Credits");
         SceneManager.LoadScene(2);
-    }
+        Debug.Log("Credits");
+            }
 }
