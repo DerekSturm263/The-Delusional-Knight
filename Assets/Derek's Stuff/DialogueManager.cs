@@ -56,6 +56,9 @@ public class DialogueManager : MonoBehaviour
 		currentDialogue = firstDialogue;
 		currentSpeaker = currentDialogue.Speaker;
 
+		dialogueBG1.gameObject.SetActive(false);
+		dialogueBG2.gameObject.SetActive(false);
+
 		if (currentDialogue.Responses.Count > 0)
 			StartCoroutine(WriteResponses(currentDialogue.Responses));
 		else
@@ -108,6 +111,27 @@ public class DialogueManager : MonoBehaviour
 		currentDialogue = null;
 
 		allDialogueGUI.GetComponent<Animator>().SetBool("Exit", true);
+		currentDialogueBG.GetComponent<Animator>().SetBool("Done", true);
+	}
+
+	public void SkipDialogue()
+	{
+		if (!canSkip)
+		{
+			waitTime = 0f;
+			canSkip = true;
+		}
+		else
+		{
+			try
+			{
+				responseNum = eventSystem.currentSelectedGameObject.GetComponent<Response>().responseNum;
+			}
+			catch { }
+
+			if (currentDialogueBG.material == speechMaterial) AdvanceDialogue();
+			else if (responseNum != -1) AdvanceDialogue(responseNum);
+		}
 	}
 
 	public void SwitchSpeaker(bool isResponding)
@@ -132,11 +156,8 @@ public class DialogueManager : MonoBehaviour
 			currentDialogueBG = dialogueBG2;
 		}
 
-		if (oldBG != currentDialogueBG && oldBG != null)
-		{
-			oldBG.color = Color.grey;
-			oldBG.GetComponent<Canvas>().sortingOrder = 1;
-		}
+		if (oldBG != null && oldBG != currentDialogueBG)
+			oldBG.GetComponent<Animator>().SetBool("Exit", true);
 
 		if (!isResponding) currentDialogueText.gameObject.SetActive(true);
 		else responsesLayout.gameObject.SetActive(true);
@@ -201,23 +222,7 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
 		// Lets the user input "Fire1" to skip through dialogue.
-        if (Input.GetButtonDown("Fire1"))
-		{
-			if (!canSkip)
-			{
-				waitTime = 0f;
-				canSkip = true;
-			}
-			else
-			{
-				try
-				{
-					responseNum = eventSystem.currentSelectedGameObject.GetComponent<Response>().responseNum;
-				} catch { }
-
-				if (currentDialogueBG.material == speechMaterial) AdvanceDialogue();
-				else if (responseNum != -1) AdvanceDialogue(responseNum);
-			}
-		}
+		if (Input.GetButtonDown("Fire1"))
+			SkipDialogue();
     }
 }
