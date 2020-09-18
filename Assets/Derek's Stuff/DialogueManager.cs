@@ -12,11 +12,11 @@ public class DialogueManager : MonoBehaviour
 	[HideInInspector] public Character speaker2; // Speaker on the right.
 
 	[HideInInspector] public Character currentSpeaker; // Current speaker.
-	[HideInInspector] public Text currentSpeakerName; // Current speaker.
+	[HideInInspector] public TMPro.TMP_Text currentSpeakerName; // Current speaker.
 	[HideInInspector] public Image currentSpeakerIcon; // Current speaker.
 
 	[HideInInspector] public Image currentDialogueBG; // Current background for dialogue.
-	[HideInInspector] public Text currentDialogueText; // Current text for dialogue.
+	[HideInInspector] public TMPro.TMP_Text currentDialogueText; // Current text for dialogue.
 
 	[HideInInspector] public SpeechBubble currentDialogue; // Current running line of dialogue.
 
@@ -26,14 +26,14 @@ public class DialogueManager : MonoBehaviour
 	public int responseNum = -1;
 
 	public GameObject allDialogueGUI;
-	public Text dialogueText1GUI;
-	public Text dialogueText2GUI;
+	public TMPro.TMP_Text dialogueText1GUI;
+	public TMPro.TMP_Text dialogueText2GUI;
 	public Image dialogueBG1;
 	public Image dialogueBG2;
 	public Image speaker1GUI;
 	public Image speaker2GUI;
-	public Text speaker1Name;
-	public Text speaker2Name;
+	public TMPro.TMP_Text speaker1Name;
+	public TMPro.TMP_Text speaker2Name;
 
 	public GameObject responsesLayout;
 	public Button buttonTemplate;
@@ -218,7 +218,7 @@ public class DialogueManager : MonoBehaviour
 	private IEnumerator Write(string text)
 	{
 		SwitchSpeaker(false);
-		Text output = currentDialogueText;
+		TMPro.TMP_Text output = currentDialogueText;
 
 		finishedWriting = false;
 		canSkip = false;
