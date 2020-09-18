@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class CutsceneManager : MonoBehaviour
 {
+    public void BeginCutscene()
+    {
 
+    }
+
+    public void EndCutscene()
+    {
+
+    }
 }
