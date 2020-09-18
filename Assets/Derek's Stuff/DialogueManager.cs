@@ -12,9 +12,13 @@ public class DialogueManager : MonoBehaviour
 	[HideInInspector] public Character speaker2; // Speaker on the right.
 
 	[HideInInspector] public Character currentSpeaker; // Current speaker.
-	[HideInInspector] public SpeechBubble currentDialogue; // Current running line of dialogue.
+	[HideInInspector] public Text currentSpeakerName; // Current speaker.
+	[HideInInspector] public Image currentSpeakerIcon; // Current speaker.
+
 	[HideInInspector] public Image currentDialogueBG; // Current background for dialogue.
 	[HideInInspector] public Text currentDialogueText; // Current text for dialogue.
+
+	[HideInInspector] public SpeechBubble currentDialogue; // Current running line of dialogue.
 
 	public Material speechMaterial;
 	public Material thinkingMaterial;
@@ -36,18 +40,43 @@ public class DialogueManager : MonoBehaviour
 
 	private bool canSkip = false;
 	private float waitTime = 0.05f;
+	private bool finishedWriting = false;
+
+	private bool singlePerson;
+
+	public void WriteDialogue(SpeechBubble line, Character character1, Character character2 = null)
+	{
+		SetupDialogue(character1, character2);
+		StartDialogue(line);
+	}
 
 	// Start with this piece of code to set who’s talking.
-	public void SetupDialogue(Character character1, Character character2)
+	public void SetupDialogue(Character character1, Character character2 = null)
 	{
+		singlePerson = (character2 == null) ? true : false;
+
 		speaker1 = character1;
-		speaker2 = character2;
 
-		speaker1GUI = speaker1.Head;
-		speaker2GUI = speaker2.Head;
-
+		try
+		{
+			speaker1GUI.sprite = speaker1.Head.sprite;
+		} catch { }
 		speaker1Name.text = speaker1.Name;
-		speaker2Name.text = speaker2.Name;
+
+		if (!singlePerson)
+		{
+			speaker2 = character2;
+			try
+			{
+				speaker2GUI.sprite = speaker2.Head.sprite;
+			} catch { }
+			speaker2Name.text = speaker2.Name;
+		}
+		else
+		{
+			speaker2GUI.gameObject.SetActive(false);
+			speaker2Name.gameObject.SetActive(false);
+		}
 	}
 
 	// Continue with this line of code to make one of them start talking.
@@ -121,10 +150,10 @@ public class DialogueManager : MonoBehaviour
 			waitTime = 0f;
 			canSkip = true;
 		}
-		else
+		else if (finishedWriting)
 		{
-			try
-			{
+				try
+				{
 				responseNum = eventSystem.currentSelectedGameObject.GetComponent<Response>().responseNum;
 			}
 			catch { }
@@ -137,9 +166,11 @@ public class DialogueManager : MonoBehaviour
 	public void SwitchSpeaker(bool isResponding)
 	{
 		Image oldBG = null;
+
 		try
 		{
 			oldBG = currentDialogueBG;
+
 			currentDialogueText.gameObject.SetActive(false);
 
 			if (responsesLayout.gameObject.activeSelf) responsesLayout.gameObject.SetActive(false);
@@ -149,15 +180,31 @@ public class DialogueManager : MonoBehaviour
 		{
 			currentDialogueText = dialogueText1GUI;
 			currentDialogueBG = dialogueBG1;
+			currentSpeakerName = speaker1Name;
+			currentSpeakerIcon = speaker1GUI;
+
+			speaker1Name.color = Color.white;
+			speaker2Name.color = Color.grey;
+			speaker1GUI.color = Color.white;
+			speaker2GUI.color = Color.grey;
 		}
 		else
 		{
 			currentDialogueText = dialogueText2GUI;
 			currentDialogueBG = dialogueBG2;
+			currentSpeakerName = speaker2Name;
+			currentSpeakerIcon = speaker2GUI;
+
+			speaker2Name.color = Color.white;
+			speaker1Name.color = Color.grey;
+			speaker2GUI.color = Color.white;
+			speaker1GUI.color = Color.grey;
 		}
 
 		if (oldBG != null && oldBG != currentDialogueBG)
+		{
 			oldBG.GetComponent<Animator>().SetBool("Exit", true);
+		}
 
 		if (!isResponding) currentDialogueText.gameObject.SetActive(true);
 		else responsesLayout.gameObject.SetActive(true);
@@ -165,7 +212,6 @@ public class DialogueManager : MonoBehaviour
 		currentDialogueBG.gameObject.SetActive(true);
 		currentDialogueBG.GetComponent<Canvas>().sortingOrder = 2;
 		currentDialogueBG.material = (!isResponding) ? speechMaterial : thinkingMaterial;
-		currentDialogueBG.color = Color.white;
 	}
 
 	// Writes text to text box.
@@ -174,6 +220,7 @@ public class DialogueManager : MonoBehaviour
 		SwitchSpeaker(false);
 		Text output = currentDialogueText;
 
+		finishedWriting = false;
 		canSkip = false;
 		waitTime = 0.05f;
 		output.text = "";
@@ -186,6 +233,7 @@ public class DialogueManager : MonoBehaviour
 		}
 
 		canSkip = true;
+		finishedWriting = true;
 	}
 
 	private IEnumerator WriteResponses(List<string> responses)
@@ -193,6 +241,7 @@ public class DialogueManager : MonoBehaviour
 		SwitchSpeaker(true);
 		responseNum = -1;
 
+		finishedWriting = false;
 		Transform[] responseArray = responsesLayout.GetComponentsInChildren<Transform>();
 		foreach (Transform response in responseArray)
         {
@@ -207,6 +256,7 @@ public class DialogueManager : MonoBehaviour
 			newResponse.GetComponent<Response>().responseNum = responses.IndexOf(response);
         }
 
+		finishedWriting = true;
 		yield return null;
     }
 
@@ -215,8 +265,7 @@ public class DialogueManager : MonoBehaviour
 		AllDialogue.Initialize();
 		eventSystem = EventSystem.current;
 
-		SetupDialogue(Characters.player, Characters.witch);
-		StartDialogue(AllDialogue.firstConversation);
+		WriteDialogue(AllDialogue.firstConversation, Characters.player, Characters.witch);
     }
 
     private void Update()

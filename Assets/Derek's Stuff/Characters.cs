@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public static class Characters
 {
-    public static Character player = new Character("Dagon", Resources.Load("Dagon") as Image);
-    public static Character witch = new Character("Witch", Resources.Load("Witch") as Image);
+    public static string path = "Assets/Derek's Stuff/";
+
+    public static Character player = new Character("Dagon", Resources.Load(path + "placeholder_playerIcon") as Image);
+    public static Character witch = new Character("Witch", Resources.Load(path + "placeholder_witchIcon") as Image);
 }
