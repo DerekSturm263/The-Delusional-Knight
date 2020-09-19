@@ -8,6 +8,8 @@ public class EnemyVision : MonoBehaviour
 
     public float fieldOfViewAngle = 110f;
     public bool playerInSight, playerInRange;
+    public float range = 10f;
+    LineRenderer lr;
  
 
 
@@ -15,6 +17,7 @@ public class EnemyVision : MonoBehaviour
 
     void Start()
     {
+        lr = GetComponent<LineRenderer>();  
         enemy = gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         
@@ -31,10 +34,12 @@ public class EnemyVision : MonoBehaviour
         if (Vector2.Angle(transform.up, playerPosition - EnemyPosition) < fieldOfViewAngle)
         {
             playerInSight = true;
+            
         }
         else playerInSight = false;
-        if (Vector2.Distance(transform.position, playerPosition) <= 6 && playerInSight)
+        if (Vector2.Distance(transform.position, playerPosition) <= range && playerInSight)
         {
+            Debug.DrawLine(EnemyPosition, playerPosition, Color.red);
             Rotation();
         }
 
@@ -42,9 +47,9 @@ public class EnemyVision : MonoBehaviour
 
     private void Rotation()
     {
-        Vector2 direction = player.transform.position;
+        Vector2 direction = player.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90f, Vector3.forward);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.deltaTime);
     }
