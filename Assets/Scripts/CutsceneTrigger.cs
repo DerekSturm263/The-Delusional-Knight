@@ -5,14 +5,15 @@ using UnityEngine;
 public class CutsceneTrigger : MonoBehaviour
 {
     public GameObject cutscene;
+    private CutsceneManager cm;
 
     private void Awake()
     {
-        CutsceneManager.Initialize();
+        cm = GameObject.FindGameObjectWithTag("CutsceneManager").GetComponent<CutsceneManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        CutsceneManager.BeginCutscene(cutscene);
+        cm.BeginCutscene(cutscene);
     }
 }

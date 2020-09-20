@@ -3,54 +3,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public static class CutsceneManager
+public class CutsceneManager : MonoBehaviour
 {
-    private static DialogueManager dm;
-    private static GameObject flash;
+    private DialogueManager dm;
+    public GameObject flash;
 
-    public static List<GameObject> unloadableObjects = new List<GameObject>();
-    public static GameObject cutsceneObject;
+    [HideInInspector] public List<GameObject> unloadableObjects = new List<GameObject>();
+    private GameObject cutscene;
     
-    public static GameObject oldCameraTarget;
-    private static Camera camera;
+    private GameObject oldCameraTarget;
+    private Camera camera;
 
-    public static void Initialize()
+    private void Awake()
     {
         dm = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
-        flash = GameObject.FindGameObjectWithTag("FlashbackFlash");
-        flash.SetActive(false);
     }
 
-    public static void BeginCutscene(GameObject cutscene)
+    public void BeginCutscene(GameObject cutsceneObj)
     {
         camera = Camera.main;
         unloadableObjects = GameObject.FindGameObjectsWithTag("Unloadable").ToList();
-        cutsceneObject = cutscene;
+        cutscene = cutsceneObj;
 
         flash.GetComponent<Animator>().speed = 1f;
         flash.SetActive(true);
-        dm.WriteDialogue(AllDialogue.memory1, Characters.player);
+        dm.WriteDialogue(AllDialogue.memory, Characters.player);
+
         dm.SetEndOfDialogue(() =>
         {
             flash.GetComponent<Animator>().speed = 0.25f;
             flash.SetActive(true);
-            LoadObjects(cutscene);
+            Invoke("LoadObjects", 1f);
         });
     }
 
-    public static void LoadObjects(GameObject cutscene)
+    public void LoadObjects()
     {
+        cutscene.SetActive(true);
+        oldCameraTarget = camera.GetComponent<CameraFollow2D>().FollowTarget;
         camera.GetComponent<CameraFollow2D>().FollowTarget = cutscene;
         camera.transform.position = cutscene.transform.position;
         unloadableObjects.ForEach(x => x.SetActive(false));
-        cutsceneObject.SetActive(true);
     }
 
-    public static void EndCutscene()
+    public void EndCutscene()
     {
-        cutsceneObject.SetActive(false);
         unloadableObjects.ForEach(x => x.SetActive(true));
         camera.GetComponent<CameraFollow2D>().FollowTarget = oldCameraTarget;
         camera.transform.position = oldCameraTarget.transform.position;
+        cutscene.SetActive(false);
     }
 }

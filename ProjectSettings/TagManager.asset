@@ -8,7 +8,7 @@ TagManager:
   - MCTestAI
   - Unloadable
   - DialogueManager
-  - FlashbackFlash
+  - CutsceneManager
   layers:
   - Default
   - TransparentFX
