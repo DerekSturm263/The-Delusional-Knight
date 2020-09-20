@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
 	private EventSystem eventSystem;
 	public GameObject dialogue;
 
+	public static bool isDialoguing;
+
 	[HideInInspector] public Character speaker1; // Speaker on the left.
 	[HideInInspector] public Character speaker2; // Speaker on the right.
 
@@ -86,6 +88,7 @@ public class DialogueManager : MonoBehaviour
 	// Continue with this line of code to make one of them start talking.
 	public void StartDialogue(SpeechBubble firstDialogue)
 	{
+		isDialoguing = true;
 		dialogue.SetActive(true);
 
 		currentDialogue = firstDialogue;
@@ -149,6 +152,7 @@ public class DialogueManager : MonoBehaviour
 		currentDialogueBG.GetComponent<Animator>().SetBool("Done", true);
 
 		if (action != null) action.Invoke();
+		isDialoguing = false;
 	}
 
 	public void SkipDialogue()
