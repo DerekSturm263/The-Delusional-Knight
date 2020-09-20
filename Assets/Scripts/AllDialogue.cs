@@ -21,6 +21,8 @@ public static class AllDialogue
     public static SpeechBubble lastLastResponse = new SpeechBubble(Characters.player, "OK. I am seriously running out of things to say now.");
     public static SpeechBubble lastLastLastResponse = new SpeechBubble(Characters.witch, "This is annoying.");
 
+    public static SpeechBubble memory1 = new SpeechBubble(Characters.player, "Huh!");
+
     public static void Initialize()
     {
         firstConversation.SetLines(new List<SpeechBubble> { secondConversation });
@@ -39,5 +41,7 @@ public static class AllDialogue
         lastResponse.SetLines(new List<SpeechBubble> { lastLastLastResponse });
         lastLastResponse.SetLines(new List<SpeechBubble> { lastLastLastResponse });
         lastLastLastResponse.SetLines();
+
+        memory1.SetLines();
     }
 }

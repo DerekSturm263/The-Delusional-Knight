@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
-	public EventSystem eventSystem;
+	private EventSystem eventSystem;
+	public GameObject dialogue;
 
 	[HideInInspector] public Character speaker1; // Speaker on the left.
 	[HideInInspector] public Character speaker2; // Speaker on the right.
@@ -43,6 +45,8 @@ public class DialogueManager : MonoBehaviour
 	private bool finishedWriting = false;
 
 	private bool singlePerson;
+
+	private Action action = null;
 
 	public void WriteDialogue(SpeechBubble line, Character character1, Character character2 = null)
 	{
@@ -82,6 +86,8 @@ public class DialogueManager : MonoBehaviour
 	// Continue with this line of code to make one of them start talking.
 	public void StartDialogue(SpeechBubble firstDialogue)
 	{
+		dialogue.SetActive(true);
+
 		currentDialogue = firstDialogue;
 		currentSpeaker = currentDialogue.Speaker;
 
@@ -141,6 +147,8 @@ public class DialogueManager : MonoBehaviour
 
 		allDialogueGUI.GetComponent<Animator>().SetBool("Exit", true);
 		currentDialogueBG.GetComponent<Animator>().SetBool("Done", true);
+
+		if (action != null) action.Invoke();
 	}
 
 	public void SkipDialogue()
@@ -260,13 +268,17 @@ public class DialogueManager : MonoBehaviour
 		yield return null;
     }
 
+	public void SetEndOfDialogue(Action a)
+    {
+		action = a;
+    }
+
     private void Awake()
     {
 		AllDialogue.Initialize();
 		eventSystem = EventSystem.current;
-
-		WriteDialogue(AllDialogue.firstConversation, Characters.player, Characters.witch);
-    }
+		dialogue.SetActive(false);
+	}
 
     private void Update()
     {

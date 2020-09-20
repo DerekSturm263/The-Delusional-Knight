@@ -6,6 +6,9 @@ TagManager:
   tags:
   - MCTestWall
   - MCTestAI
+  - Unloadable
+  - DialogueManager
+  - FlashbackFlash
   layers:
   - Default
   - TransparentFX
