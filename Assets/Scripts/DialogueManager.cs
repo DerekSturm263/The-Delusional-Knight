@@ -78,6 +78,9 @@ public class DialogueManager : MonoBehaviour
 				speaker2GUI.sprite = speaker2.Head.sprite;
 			} catch { }
 			speaker2Name.text = speaker2.Name;
+
+			speaker2GUI.gameObject.SetActive(true);
+			speaker2Name.gameObject.SetActive(true);
 		}
 		else
 		{
