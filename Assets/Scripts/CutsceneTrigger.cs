@@ -5,6 +5,7 @@ using UnityEngine;
 public class CutsceneTrigger : MonoBehaviour
 {
     public GameObject cutscene;
+    public string cutsceneName;
     private CutsceneManager cm;
 
     private void Awake()
@@ -14,6 +15,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        cm.BeginCutscene(cutscene);
+        cm.BeginCutscene(cutscene, cutsceneName);
+        gameObject.SetActive(false);
     }
 }

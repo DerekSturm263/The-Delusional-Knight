@@ -22,6 +22,10 @@ public static class AllDialogue
     public static SpeechBubble lastLastLastResponse = new SpeechBubble(Characters.witch, "This is annoying.");
 
     public static SpeechBubble memory = new SpeechBubble(Characters.player, "Huh?!");
+    public static SpeechBubble flashback1a = new SpeechBubble(Characters.witch, "So if I pay you 100 gold, will you kidnap the princess for me?");
+    public static SpeechBubble flashback1b = new SpeechBubble(Characters.player, "No way! My sole job is to protect the princess.");
+    public static SpeechBubble flashback1c = new SpeechBubble(Characters.player, "There's no way in hell I'd kidnap her for you!");
+    public static SpeechBubble flashback1d = new SpeechBubble(Characters.witch, "Then I'll have to use other methods...");
 
     public static void Initialize()
     {
@@ -40,8 +44,13 @@ public static class AllDialogue
         anotherResponse.SetLines(new List<SpeechBubble> { lastResponse, lastLastResponse });
         lastResponse.SetLines(new List<SpeechBubble> { lastLastLastResponse });
         lastLastResponse.SetLines(new List<SpeechBubble> { lastLastLastResponse });
-        lastLastLastResponse.SetLines();
+        lastLastLastResponse.SetLines(); // End of conversation.
 
-        memory.SetLines();
+        memory.SetLines(); // End of conversation.
+
+        flashback1a.SetLines(new List<SpeechBubble> { flashback1b });
+        flashback1b.SetLines(new List<SpeechBubble> { flashback1c });
+        flashback1c.SetLines(new List<SpeechBubble> { flashback1d });
+        flashback1d.SetLines(); // End of conversation.
     }
 }
