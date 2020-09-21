@@ -21,7 +21,17 @@ public static class AllCutscenes
         }));
         cutscenes.Add("memory1Ending", new Action(() =>
         {
-            dm.WriteDialogue(AllDialogue.flashbackEnding, Characters.player);
+            dm.WriteDialogue(AllDialogue.flashback1Ending, Characters.player);
+        }));
+
+        cutscenes.Add("memory2", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashback2a, Characters.player, Characters.witch);
+            dm.SetEndOfDialogue(new Action(() => cm.EndCutscene()));
+        }));
+        cutscenes.Add("memory2Ending", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashback2Ending, Characters.player);
         }));
     }
 }

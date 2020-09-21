@@ -27,7 +27,16 @@ public static class AllDialogue
     public static SpeechBubble flashback1b = new SpeechBubble(Characters.player, "No way! My sole job is to protect the princess.");
     public static SpeechBubble flashback1c = new SpeechBubble(Characters.player, "There's no way in hell I'd kidnap her for you!");
     public static SpeechBubble flashback1d = new SpeechBubble(Characters.witch, "Then I'll have to use other methods...");
-    public static SpeechBubble flashbackEnding = new SpeechBubble(Characters.player, "Wait? Kidnap the princess? She never said anything about that...");
+    public static SpeechBubble flashback1Ending = new SpeechBubble(Characters.player, "Wait? Kidnap the princess? She never said anything about that...");
+
+    public static SpeechBubble flashback2a = new SpeechBubble(Characters.player, "*Gulp* *gulp* *gulp*.");
+    public static SpeechBubble flashback2b = new SpeechBubble(Characters.witch, "Hey you!");
+    public static SpeechBubble flashback2c = new SpeechBubble(Characters.witch, "You're that princess's guard aren't you?");
+    public static SpeechBubble flashback2d = new SpeechBubble(Characters.player, "That I am, and you are-- wait! You're that evil witch!");
+    public static SpeechBubble flashback2e = new SpeechBubble(Characters.witch, "I may be evil, but I have a job for you. I need you to kidnap the princess for me.");
+    public static SpeechBubble flashback2f = new SpeechBubble(Characters.player, "Kidnap, wait, what?! I would never kidnap the princess!");
+    public static SpeechBubble flashback2g = new SpeechBubble(Characters.witch, "What if I said I had an offer that you couldn't refuse?");
+    public static SpeechBubble flashback2Ending = new SpeechBubble(Characters.player, "An offer I can't refuse? Well, since I'm after I princess I guess I didn't refuse.");
 
     public static void Initialize()
     {
@@ -54,6 +63,15 @@ public static class AllDialogue
         flashback1b.SetLines(new List<SpeechBubble> { flashback1c });
         flashback1c.SetLines(new List<SpeechBubble> { flashback1d });
         flashback1d.SetLines(); // End of conversation.
-        flashbackEnding.SetLines(); // End of conversation.
+        flashback1Ending.SetLines(); // End of conversation.
+
+        flashback2a.SetLines(new List<SpeechBubble> { flashback2b });
+        flashback2b.SetLines(new List<SpeechBubble> { flashback2c });
+        flashback2c.SetLines(new List<SpeechBubble> { flashback2d });
+        flashback2d.SetLines(new List<SpeechBubble> { flashback2e });
+        flashback2e.SetLines(new List<SpeechBubble> { flashback2f });
+        flashback2f.SetLines(new List<SpeechBubble> { flashback2g });
+        flashback2g.SetLines(); // End of conversation.
+        flashback2Ending.SetLines(); // End of conversation.
     }
 }
