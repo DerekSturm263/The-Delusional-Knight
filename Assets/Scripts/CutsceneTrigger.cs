@@ -6,6 +6,7 @@ public class CutsceneTrigger : MonoBehaviour
 {
     public GameObject cutscene;
     public string cutsceneName;
+    public string afterCutsceneEvent;
     private CutsceneManager cm;
 
     private void Awake()
@@ -15,7 +16,7 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        cm.BeginCutscene(cutscene, cutsceneName);
+        cm.BeginCutscene(cutscene, cutsceneName, afterCutsceneEvent);
         gameObject.SetActive(false);
     }
 }

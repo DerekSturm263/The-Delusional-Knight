@@ -19,5 +19,9 @@ public static class AllCutscenes
             dm.WriteDialogue(AllDialogue.flashback1a, Characters.player, Characters.witch);
             dm.SetEndOfDialogue(new Action( () => cm.EndCutscene()));
         }));
+        cutscenes.Add("memory1Ending", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashbackEnding, Characters.player);
+        }));
     }
 }

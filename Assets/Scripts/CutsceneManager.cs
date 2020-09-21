@@ -16,6 +16,7 @@ public class CutsceneManager : MonoBehaviour
     private Camera cam;
 
     private Action afterTransitionAction;
+    private Action afterCutsceneAction;
 
     public static bool isInCutscene = false;
 
@@ -25,13 +26,14 @@ public class CutsceneManager : MonoBehaviour
         AllCutscenes.Initialize();
     }
 
-    public void BeginCutscene(GameObject cutsceneObj, string cutsceneName)
+    public void BeginCutscene(GameObject cutsceneObj, string cutsceneName, string postCutsceneName)
     {
         isInCutscene = true;
         cam = Camera.main;
         unloadableObjects = GameObject.FindGameObjectsWithTag("Unloadable").ToList();
         cutscene = cutsceneObj;
         afterTransitionAction = AllCutscenes.cutscenes[cutsceneName];
+        afterCutsceneAction = AllCutscenes.cutscenes[postCutsceneName];
 
         flash.GetComponent<Animator>().speed = 1f;
         flash.SetActive(true);
@@ -51,7 +53,7 @@ public class CutsceneManager : MonoBehaviour
         cutscene.SetActive(true);
         oldCameraTarget = cam.GetComponent<CameraFollow2D>().FollowTarget;
         cam.GetComponent<CameraFollow2D>().FollowTarget = cutscene;
-        cam.transform.position = cutscene.transform.position;
+        cam.transform.position = new Vector3(cutscene.transform.position.x, cutscene.transform.position.y, -10f);
         unloadableObjects.ForEach(x => x.SetActive(false));
 
         Invoke("AfterTransition", 0.5f);
@@ -77,5 +79,12 @@ public class CutsceneManager : MonoBehaviour
         cam.transform.position = new Vector3(oldCameraTarget.transform.position.x, oldCameraTarget.transform.position.y, -10f);
         cutscene.SetActive(false);
         isInCutscene = false;
+
+        Invoke("AfterCutscene", 0.5f);
+    }
+
+    public void AfterCutscene()
+    {
+        afterCutsceneAction.Invoke();
     }
 }

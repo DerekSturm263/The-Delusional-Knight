@@ -60,6 +60,7 @@ public class DialogueManager : MonoBehaviour
 	public void SetupDialogue(Character character1, Character character2 = null)
 	{
 		singlePerson = (character2 == null) ? true : false;
+		action = null;
 
 		speaker1 = character1;
 
