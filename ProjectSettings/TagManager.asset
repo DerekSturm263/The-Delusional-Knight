@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - MCTestWall
-  - MCTestAI
-  - Unloadable
-  - DialogueManager
   - CutsceneManager
+  - DialogueManager
+  - Unloadable
   layers:
   - Default
   - TransparentFX
@@ -18,15 +16,9 @@ TagManager:
   - UI
   - 
   - 
-<<<<<<< HEAD
-  - Interactable
-  - Player
   - 
-=======
-  - MCTestPlayer
-  - MCTestWall
-  - MCTestAI
->>>>>>> c9688e33ab1032b74b684f7a6daad2af829ab3f5
+  - 
+  - 
   - 
   - 
   - 
@@ -53,5 +45,5 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: UI
-    uniqueID: 174871623
+    uniqueID: 3202690591
     locked: 0
