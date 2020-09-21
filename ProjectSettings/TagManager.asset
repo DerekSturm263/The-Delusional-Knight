@@ -18,9 +18,15 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
+  - Interactable
+  - Player
+  - 
+=======
   - MCTestPlayer
   - MCTestWall
   - MCTestAI
+>>>>>>> c9688e33ab1032b74b684f7a6daad2af829ab3f5
   - 
   - 
   - 
