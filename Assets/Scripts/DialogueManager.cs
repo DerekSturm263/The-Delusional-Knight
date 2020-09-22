@@ -280,7 +280,10 @@ public class DialogueManager : MonoBehaviour
     {
 		action = a;
     }
-
+	public bool GetIsDialoguing()
+	{
+		return isDialoguing;
+	}
     private void Awake()
     {
 		AllDialogue.Initialize();
