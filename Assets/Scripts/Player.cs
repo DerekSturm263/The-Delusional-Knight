@@ -26,11 +26,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         //Check player stops
-        if (dm.GetIsDialoguing())
+        if (dm != null)
         {
-            stopPlayer = true;
-        } 
-        else { stopPlayer = false; }
+            if (dm.GetIsDialoguing())
+            {
+                stopPlayer = true;
+            }
+            else { stopPlayer = false; }
+        }
         //Draw debug line
         Debug.DrawLine(this.transform.position, this.transform.position + directionFacing, Color.green);
         //Interact
@@ -79,7 +82,7 @@ public class Player : MonoBehaviour
         velocity.x = MoveX * speed;
         velocity.y = MoveY * speed;
 
-        //Make diagnol speed lower 
+        //Make diagnal speed lower 
         if(velocity.x != 0 && velocity.y != 0 && !stopPlayer)
         {
             speed = speedDiag;
