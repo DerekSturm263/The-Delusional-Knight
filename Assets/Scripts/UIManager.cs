@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public static string objective = "Find something to tie the princess up with.";
+    public TMPro.TMP_Text objectiveText;
+
     private EventSystem eventSystem;
 
     public GameObject pauseUI;
@@ -43,6 +46,7 @@ public class UIManager : MonoBehaviour
 
         isPaused = true;
         pauseUI.SetActive(true);
+        objectiveText.text = "Current Objective:\n" + objective;
         eventSystem.SetSelectedGameObject(pauseButtons[0].gameObject);
     }
 
