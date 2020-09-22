@@ -60,6 +60,7 @@ public class DialogueManager : MonoBehaviour
 	public void SetupDialogue(Character character1, Character character2 = null)
 	{
 		singlePerson = (character2 == null) ? true : false;
+		action = null;
 
 		speaker1 = character1;
 
@@ -77,6 +78,9 @@ public class DialogueManager : MonoBehaviour
 				speaker2GUI.sprite = speaker2.Head.sprite;
 			} catch { }
 			speaker2Name.text = speaker2.Name;
+
+			speaker2GUI.gameObject.SetActive(true);
+			speaker2Name.gameObject.SetActive(true);
 		}
 		else
 		{
