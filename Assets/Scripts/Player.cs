@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
-    private Animator animator;
+    //private Animator animator;
     private Rigidbody2D rb;
     private DialogueManager dm;
     private CutsceneManager cm;
@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         dm = GameObject.FindObjectOfType<DialogueManager>();
         cm = GameObject.FindObjectOfType<CutsceneManager>();
         speedTemp = speed; speedDiag = speed / 1.33f;
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -94,8 +94,8 @@ public class Player : MonoBehaviour
         rb.velocity = velocity;
 
         //change directino facing
-        animator.SetFloat("xDir", rb.velocity.x);
-        animator.SetFloat("yDir", rb.velocity.y);
+        //animator.SetFloat("xDir", rb.velocity.x);
+        //animator.SetFloat("yDir", rb.velocity.y);
     }
     public void ChangeDirectionX(int xDir)
     {
