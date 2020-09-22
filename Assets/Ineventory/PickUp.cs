@@ -14,23 +14,21 @@ public class PickUp : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            for (int i = 0; i < inventory.slots.Length; i++)
-            {
-                if (inventory.isFull[i] == false)
-                {
-                    //Item can be in inventory
-                    inventory.isFull[i] = true;
-                    Instantiate(IteamButton, inventory.slots[i].transform, false);
-                    Destroy(gameObject);
-                    break;
-                }
-            }
-        }
+            PickUpItem();
     }
     // Update is called once per frame
-    void Update()
+    public void PickUpItem()
     {
-        
+        for (int i = 0; i < inventory.slots.Length; i++)
+        {
+            if (inventory.isFull[i] == false)
+            {
+                //Item can be in inventory
+                inventory.isFull[i] = true;
+                Instantiate(IteamButton, inventory.slots[i].transform, false);
+                Destroy(gameObject);
+                break;
+            }
+        }
     }
 }
