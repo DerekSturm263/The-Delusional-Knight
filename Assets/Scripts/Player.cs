@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         //Check player stops
         if (dm != null)
         {
-            if (dm.GetIsDialoguing())
+            if (dm.GetIsDialoguing() || UIManager.isPaused)
             {
                 stopPlayer = true;
             }

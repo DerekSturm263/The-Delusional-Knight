@@ -16,17 +16,26 @@ public class UIManager : MonoBehaviour
     private Animator pauseUIAnimator;
 
     public Button[] pauseButtons;
+    public GameObject[] optionsActions;
 
-    public TMPro.TMP_Text label;
+    public GameObject objectiveGO;
     public GameObject pauseButtonsLayout;
     public GameObject optionsLayout;
 
     public static bool isPaused;
 
+    public static bool isFullscreen = true;
+    public static float musicVol = 1f;
+    public static float soundVol = 1f;
+    public static bool hasFancyGraphics = true;
+
     private void Awake()
     {
         eventSystem = EventSystem.current;
         pauseUIAnimator = pauseUI.GetComponent<Animator>();
+
+        MusicPlayer.Initialize();
+        SoundPlayer.Initialize();
     }
 
     private void Update()
@@ -58,9 +67,10 @@ public class UIManager : MonoBehaviour
 
     public void Options()
     {
+        objectiveGO.SetActive(false);
         pauseButtonsLayout.SetActive(false);
         optionsLayout.SetActive(true);
-        label.text = "Options";
+        eventSystem.SetSelectedGameObject(optionsActions[0]);
     }
 
     public void Credits()
@@ -75,8 +85,32 @@ public class UIManager : MonoBehaviour
 
     public void Back()
     {
+        objectiveGO.SetActive(true);
         pauseButtonsLayout.SetActive(true);
         optionsLayout.SetActive(false);
-        label.text = "Pause";
+        eventSystem.SetSelectedGameObject(pauseButtons[1].gameObject);
+    }
+
+    public void ToggleFullscreen()
+    {
+        isFullscreen = !isFullscreen;
+        Screen.fullScreen = isFullscreen;
+    }
+
+    public void ChangeMusicVolume()
+    {
+        musicVol = optionsActions[1].GetComponent<Slider>().value;
+        MusicPlayer.ChangeVolume(musicVol);
+    }
+
+    public void ChangeSFXVolume()
+    {
+        soundVol = optionsActions[2].GetComponent<Slider>().value;
+        SoundPlayer.ChangeVolume(soundVol);
+    }
+
+    public void ToggleFancyGraphics()
+    {
+        hasFancyGraphics = !hasFancyGraphics;
     }
 }
