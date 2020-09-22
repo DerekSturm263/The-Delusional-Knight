@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour
 {
@@ -112,5 +113,6 @@ public class UIManager : MonoBehaviour
     public void ToggleFancyGraphics()
     {
         hasFancyGraphics = !hasFancyGraphics;
+        Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
     }
 }
