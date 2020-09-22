@@ -7,19 +7,33 @@ public class Player : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
+    private DialogueManager dm;
     private Vector3 directionFacing = new Vector3(0,-1,0);
     private float speedTemp;
     private float speedDiag;
 
+    private bool stopPlayer;
+
     public float speed;
+    public float speedMult;
     private void Start()
     {
+        dm = GameObject.FindObjectOfType<DialogueManager>();
         speedTemp = speed; speedDiag = speed / 1.33f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
+        //Check player stops
+        if (dm != null)
+        {
+            if (dm.GetIsDialoguing())
+            {
+                stopPlayer = true;
+            }
+            else { stopPlayer = false; }
+        }
         //Draw debug line
         Debug.DrawLine(this.transform.position, this.transform.position + directionFacing, Color.green);
         //Interact
@@ -58,12 +72,18 @@ public class Player : MonoBehaviour
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
 
+        if (stopPlayer)
+        {
+            speed = 0;
+        }
+        else { speed = speedTemp; }
+
         Vector2 velocity;
         velocity.x = MoveX * speed;
         velocity.y = MoveY * speed;
 
         //Make diagnal speed lower 
-        if(velocity.x != 0 && velocity.y != 0)
+        if(velocity.x != 0 && velocity.y != 0 && !stopPlayer)
         {
             speed = speedDiag;
         }
