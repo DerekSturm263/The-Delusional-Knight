@@ -27,11 +27,17 @@ public class CutsceneManager : MonoBehaviour
         AllCutscenes.Initialize();
     }
 
+    public bool GetIsInCutscene()
+    {
+        return isInCutscene;
+    }
+
     public void BeginCutscene(GameObject cutsceneObj, string cutsceneName, string postCutsceneName)
     {
         isInCutscene = true;
         cam = Camera.main;
         unloadableObjects = GameObject.FindGameObjectsWithTag("Unloadable").ToList();
+        unloadableObjects.Add(GameObject.FindGameObjectWithTag("Player"));
         cutscene = cutsceneObj;
         afterTransitionAction = AllCutscenes.cutscenes[cutsceneName];
         afterCutsceneAction = AllCutscenes.cutscenes[postCutsceneName];
