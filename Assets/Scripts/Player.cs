@@ -17,6 +17,9 @@ public class Player : MonoBehaviour
 
     public float speed;
     public float speedMult;
+
+    public GameObject buttonPrompt;
+
     private void Start()
     {
         dm = GameObject.FindObjectOfType<DialogueManager>();
@@ -38,6 +41,14 @@ public class Player : MonoBehaviour
         }
         //Draw debug line
         Debug.DrawLine(this.transform.position, this.transform.position + directionFacing, Color.green);
+
+        RaycastHit2D checkHit = Physics2D.BoxCast(transform.position, new Vector2(1f, 1f), 0, new Vector2(directionFacing.x, directionFacing.y), 1.2f, 1 << 8);
+
+        if (checkHit && !buttonPrompt.activeSelf && !DialogueManager.isDialoguing)
+            buttonPrompt.SetActive(true);
+        else if ((!checkHit && buttonPrompt.activeSelf ) || DialogueManager.isDialoguing)
+            buttonPrompt.GetComponent<Animator>().SetBool("Exit", true);
+
         //Interact
         if (Input.GetKeyDown(KeyCode.E))
         {

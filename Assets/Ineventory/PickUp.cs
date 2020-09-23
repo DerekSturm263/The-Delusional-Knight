@@ -2,30 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class PickUp : Interactable
 {
     private Inventroy inventory;
     public GameObject IteamButton;
-    // Start is called before the first frame update
+
     private void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventroy>();
     }
-    private void OnTriggerEnter2D(Collider2D other)
+
+    protected override void Interact()
     {
-        if (other.CompareTag("Player"))
-            PickUpItem();
-    }
-    // Update is called once per frame
-    public void PickUpItem()
-    {
+        base.Interact();
+
         for (int i = 0; i < inventory.slots.Length; i++)
         {
             if (inventory.isFull[i] == false)
             {
-                //Item can be in inventory
+                // Item can be in inventory
                 inventory.isFull[i] = true;
                 Instantiate(IteamButton, inventory.slots[i].transform, false);
+                Inventroy.items.Add(IteamButton);
                 Destroy(gameObject);
                 break;
             }

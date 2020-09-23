@@ -12,5 +12,6 @@ public class Character
 	{
 		Name = name;
 		Head = head;
+		Characters.allCharacters.Add(Name, this);
 	}
 }

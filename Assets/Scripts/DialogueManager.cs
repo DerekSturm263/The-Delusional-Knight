@@ -293,8 +293,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-		// Lets the user input "Fire1" to skip through dialogue.
-		if (Input.GetButtonDown("Fire1"))
-			SkipDialogue();
+		if (isDialoguing)
+		{
+			// Lets the user input "Fire1" to skip through dialogue.
+			if (Input.GetButtonDown("Fire1"))
+				SkipDialogue();
+		}
     }
 }
