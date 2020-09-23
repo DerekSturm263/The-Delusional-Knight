@@ -19,8 +19,13 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Interactable
   - 
+=======
+  - Player
+  - Wall
+>>>>>>> a1814e00941a152b2dd21bc3b79b7359a2302a19
   - 
   - 
   - 
