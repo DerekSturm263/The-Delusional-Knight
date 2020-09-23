@@ -9,11 +9,11 @@ public static class Characters
 
     public static Dictionary<string, Character> allCharacters = new Dictionary<string, Character>();
 
-    public static Character player = new Character("Dagon", Resources.Load(path + "Main Character Head") as Image);
-    public static Character witch = new Character("Witch", Resources.Load(path + "placeholder_witchIcon") as Image);
-    public static Character guard = new Character("Guard", Resources.Load(path + "Main Character Head") as Image);
-    public static Character king = new Character("King Peter", Resources.Load(path + "Main Character Head") as Image);
-    public static Character princess = new Character("Princess Victoria", Resources.Load(path + "Main Character Head") as Image);
+    public static Character player = new Character("Dagon");
+    public static Character witch = new Character("Witch");
+    public static Character guard = new Character("Guard");
+    public static Character king = new Character("King Peter");
+    public static Character princess = new Character("Princess Victoria");
 
     public static Character CharacterByName(string name)
     {

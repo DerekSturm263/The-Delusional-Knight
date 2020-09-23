@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
 
 		try
 		{
-			speaker1GUI.sprite = speaker1.Head.sprite;
+			speaker1GUI.sprite = speaker1.Head;
 		} catch { }
 		speaker1Name.text = speaker1.Name;
 
@@ -75,7 +75,7 @@ public class DialogueManager : MonoBehaviour
 			speaker2 = character2;
 			try
 			{
-				speaker2GUI.sprite = speaker2.Head.sprite;
+				speaker2GUI.sprite = speaker2.Head;
 			} catch { }
 			speaker2Name.text = speaker2.Name;
 

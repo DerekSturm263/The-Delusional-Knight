@@ -16,6 +16,8 @@ public class ItemInteractable : Interactable
     public int dialogueNum;
     public int alternateDialogueNum;
 
+    public Sprite secondSprite;
+
     private void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventroy>();
@@ -40,17 +42,14 @@ public class ItemInteractable : Interactable
                 }
                 else
                 {
-                    if (itemDisappears)
+                    int index = Inventroy.items.IndexOf(requiredItem);
+                    foreach (Transform t in inventory.slots[index].GetComponentsInChildren<Transform>())
                     {
-                        Inventroy.items.Remove(requiredItem);
-
-                        for (int i = 0; i < inventory.slots.Length; i++)
-                        {
-                            if (inventory.slots[i].gameObject == requiredItem)
-                                Debug.Log(inventory.slots[i].gameObject.name);
-                        }
+                        if (t.gameObject != inventory.slots[index])
+                            Destroy(t.gameObject);
                     }
-
+;
+                    GetComponent<SpriteRenderer>().sprite = secondSprite;
                     dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player);
                     hasUsed = true;
                     GetComponent<BoxCollider2D>().enabled = false;

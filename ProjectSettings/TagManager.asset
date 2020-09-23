@@ -10,6 +10,7 @@ TagManager:
   - MCTestAI
   - MCTestWall
   - MCAIPatrol
+  - UIManager
   layers:
   - Default
   - TransparentFX

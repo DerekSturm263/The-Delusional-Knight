@@ -8,8 +8,12 @@ public class Interactable : MonoBehaviour
     {
 
     }
+
     public void UseInteract()
     {
+        if (UIManager.isInventoryOpen)
+            FindObjectOfType<UIManager>().CloseInventory();
+
         Interact();
     }
 }

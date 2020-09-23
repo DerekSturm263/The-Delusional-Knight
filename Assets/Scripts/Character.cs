@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class Character
 {
 	public string Name;
-	public Image Head;
+	public Sprite Head;
 
-	public Character(string name, Image head)
+	public Character(string name)
 	{
 		Name = name;
-		Head = head;
 		Characters.allCharacters.Add(Name, this);
+	}
+
+	public void SetIcon(Sprite s)
+	{
+		Head = s;
 	}
 }
