@@ -6,16 +6,15 @@ public class Npc : Interactable
 {
     private DialogueManager dm;
     private Inventroy inventory;
-    private GameObject player;
 
     public int dialogueNum;
     public int alternateDialogueNum;
     public string npcName;
     public GameObject item;
+    private bool hasSpokenTo;
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventroy>();
     }
 
@@ -36,7 +35,7 @@ public class Npc : Interactable
             }
             else
             {
-                if (!Inventroy.items.Contains(item))
+                if (!hasSpokenTo)
                 {
                     dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
                     dm.SetEndOfDialogue(() =>
@@ -53,6 +52,7 @@ public class Npc : Interactable
                             }
                         }
                     });
+                    hasSpokenTo = true;
                 }
                 else
                 {
