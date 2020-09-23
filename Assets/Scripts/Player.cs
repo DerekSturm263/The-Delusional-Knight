@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 public class Player : MonoBehaviour
 {
-    //private Animator animator;
+    private Animator animator;
     private Rigidbody2D rb;
     private DialogueManager dm;
     private CutsceneManager cm;
@@ -17,12 +17,15 @@ public class Player : MonoBehaviour
 
     public float speed;
     public float speedMult;
+
+    public GameObject buttonPrompt;
+
     private void Start()
     {
         dm = GameObject.FindObjectOfType<DialogueManager>();
         cm = GameObject.FindObjectOfType<CutsceneManager>();
         speedTemp = speed; speedDiag = speed / 1.33f;
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -38,6 +41,14 @@ public class Player : MonoBehaviour
         }
         //Draw debug line
         Debug.DrawLine(this.transform.position, this.transform.position + directionFacing, Color.green);
+
+        RaycastHit2D checkHit = Physics2D.BoxCast(transform.position, new Vector2(1f, 1f), 0, new Vector2(directionFacing.x, directionFacing.y), 1.2f, 1 << 8);
+
+        if (checkHit && !buttonPrompt.activeSelf && !DialogueManager.isDialoguing)
+            buttonPrompt.SetActive(true);
+        else if ((!checkHit && buttonPrompt.activeSelf ) || DialogueManager.isDialoguing)
+            buttonPrompt.GetComponent<Animator>().SetBool("Exit", true);
+
         //Interact
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -94,8 +105,8 @@ public class Player : MonoBehaviour
         rb.velocity = velocity;
 
         //change directino facing
-        //animator.SetFloat("xDir", rb.velocity.x);
-        //animator.SetFloat("yDir", rb.velocity.y);
+        animator.SetFloat("xDir", rb.velocity.x);
+        animator.SetFloat("yDir", rb.velocity.y);
     }
     public void ChangeDirectionX(int xDir)
     {

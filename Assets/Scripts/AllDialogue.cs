@@ -4,74 +4,27 @@ using UnityEngine;
 
 public static class AllDialogue
 {
-    public static SpeechBubble firstConversation = new SpeechBubble(Characters.witch, "I see you’ve fallen right into my trap!");
-    public static SpeechBubble secondConversation = new SpeechBubble(Characters.witch, "You're going to die now!");
-    public static SpeechBubble thirdConversation = new SpeechBubble(Characters.player, "Not so fast!");
-    public static SpeechBubble fourthConversation = new SpeechBubble(Characters.witch, "What is that supposed to mean?");
-    public static SpeechBubble responseAnswers = new SpeechBubble(Characters.player, new List<string> { "You'll see!", "I don't know...", "What's behind you?" });
-    public static SpeechBubble response1 = new SpeechBubble(Characters.player, "You'll see! I know what you did to me that night!");
-    public static SpeechBubble response2 = new SpeechBubble(Characters.player, "I don't know. I was kinda hoping you'd be too scared to ask.");
-    public static SpeechBubble response3 = new SpeechBubble(Characters.player, "What's behind you? Is that a ghost?!");
-    public static SpeechBubble response1Branch = new SpeechBubble(Characters.witch, "Oh, you do? Well, it doesn't matter! I'm gonna kill you anyways!");
-    public static SpeechBubble response2Branch = new SpeechBubble(Characters.witch, "Wow. You're lame.");
-    public static SpeechBubble response3Branch = new SpeechBubble(Characters.witch, "Ah! Where?");
-    public static SpeechBubble finalResponse = new SpeechBubble(Characters.witch, "Whatever. No matter what you said, it doesn't matter!");
-    public static SpeechBubble anotherResponse = new SpeechBubble(Characters.player, new List<string> { "I can't believe you've done this.", "OK." });
-    public static SpeechBubble lastResponse = new SpeechBubble(Characters.player, "I can't believe you've done this. That is just wrong.");
-    public static SpeechBubble lastLastResponse = new SpeechBubble(Characters.player, "OK. I am seriously running out of things to say now.");
-    public static SpeechBubble lastLastLastResponse = new SpeechBubble(Characters.witch, "This is annoying.");
+    public static Dictionary<int, SpeechBubble> allDialogue = new Dictionary<int, SpeechBubble>();
 
-    public static SpeechBubble memory = new SpeechBubble(Characters.player, "Huh?!");
-
-    public static SpeechBubble flashback1a = new SpeechBubble(Characters.witch, "So if I pay you 100 gold, will you kidnap the princess for me?");
-    public static SpeechBubble flashback1b = new SpeechBubble(Characters.player, "No way! My sole job is to protect the princess.");
-    public static SpeechBubble flashback1c = new SpeechBubble(Characters.player, "There's no way in hell I'd kidnap her for you!");
-    public static SpeechBubble flashback1d = new SpeechBubble(Characters.witch, "Then I'll have to use other methods...");
-    public static SpeechBubble flashback1Ending = new SpeechBubble(Characters.player, "Wait? Kidnap the princess? She never said anything about that...");
-
-    public static SpeechBubble flashback2a = new SpeechBubble(Characters.player, "*Gulp* *gulp* *gulp*.");
-    public static SpeechBubble flashback2b = new SpeechBubble(Characters.witch, "Hey you!");
-    public static SpeechBubble flashback2c = new SpeechBubble(Characters.witch, "You're that princess's guard aren't you?");
-    public static SpeechBubble flashback2d = new SpeechBubble(Characters.player, "That I am, and you are-- wait! You're that evil witch!");
-    public static SpeechBubble flashback2e = new SpeechBubble(Characters.witch, "I may be evil, but I have a job for you. I need you to kidnap the princess for me.");
-    public static SpeechBubble flashback2f = new SpeechBubble(Characters.player, "Kidnap, wait, what?! I would never kidnap the princess!");
-    public static SpeechBubble flashback2g = new SpeechBubble(Characters.witch, "What if I said I had an offer that you couldn't refuse?");
-    public static SpeechBubble flashback2Ending = new SpeechBubble(Characters.player, "An offer I can't refuse? Well, since I'm after I princess I guess I didn't refuse.");
+    public static SpeechBubble memory = new SpeechBubble(0, Characters.player, "Ah!");
+    public static SpeechBubble npc1Dialogue = new SpeechBubble(1, Characters.guard, "What are you doing here? Scram!");
+    public static SpeechBubble npc2Dialogue = new SpeechBubble(2, Characters.guard, "I'm not supposed to give you this... But here you go.");
+    public static SpeechBubble npc2DialogueReturn = new SpeechBubble(3, Characters.guard, "I already gave ya what ya need, now scram!");
+    public static SpeechBubble needKey = new SpeechBubble(4, Characters.player, "It won't open. It looks like I need some sort of key...");
+    public static SpeechBubble hasKey = new SpeechBubble(5, Characters.player, "It opened!");
 
     public static void Initialize()
     {
-        firstConversation.SetLines(new List<SpeechBubble> { secondConversation });
-        secondConversation.SetLines(new List<SpeechBubble> { thirdConversation });
-        thirdConversation.SetLines(new List<SpeechBubble> { fourthConversation });
-        fourthConversation.SetLines(new List<SpeechBubble> { responseAnswers });
-        responseAnswers.SetLines(new List<SpeechBubble> { response1, response2, response3 });
-        response1.SetLines(new List<SpeechBubble> { response1Branch });
-        response2.SetLines(new List<SpeechBubble> { response2Branch });
-        response3.SetLines(new List<SpeechBubble> { response3Branch });
-        response1Branch.SetLines(new List<SpeechBubble> { finalResponse });
-        response2Branch.SetLines(new List<SpeechBubble> { finalResponse });
-        response3Branch.SetLines(new List<SpeechBubble> { finalResponse });
-        finalResponse.SetLines(new List<SpeechBubble> { anotherResponse });
-        anotherResponse.SetLines(new List<SpeechBubble> { lastResponse, lastLastResponse });
-        lastResponse.SetLines(new List<SpeechBubble> { lastLastLastResponse });
-        lastLastResponse.SetLines(new List<SpeechBubble> { lastLastLastResponse });
-        lastLastLastResponse.SetLines(); // End of conversation.
-
         memory.SetLines(); // End of conversation.
+        npc1Dialogue.SetLines(); // End of conversation.
+        npc2Dialogue.SetLines(); // End of conversation.
+        npc2DialogueReturn.SetLines(); // End of conversation.
+        needKey.SetLines(); // End of conversation.
+        hasKey.SetLines(); // End of conversation.
+    }
 
-        flashback1a.SetLines(new List<SpeechBubble> { flashback1b });
-        flashback1b.SetLines(new List<SpeechBubble> { flashback1c });
-        flashback1c.SetLines(new List<SpeechBubble> { flashback1d });
-        flashback1d.SetLines(); // End of conversation.
-        flashback1Ending.SetLines(); // End of conversation.
-
-        flashback2a.SetLines(new List<SpeechBubble> { flashback2b });
-        flashback2b.SetLines(new List<SpeechBubble> { flashback2c });
-        flashback2c.SetLines(new List<SpeechBubble> { flashback2d });
-        flashback2d.SetLines(new List<SpeechBubble> { flashback2e });
-        flashback2e.SetLines(new List<SpeechBubble> { flashback2f });
-        flashback2f.SetLines(new List<SpeechBubble> { flashback2g });
-        flashback2g.SetLines(); // End of conversation.
-        flashback2Ending.SetLines(); // End of conversation.
+    public static SpeechBubble GetDialogueByID(int num)
+    {
+        return allDialogue[num];
     }
 }
