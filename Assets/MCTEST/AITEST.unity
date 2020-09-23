@@ -1374,15 +1374,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237cc65751cf5bf4da15b8c1fd4179dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 14.6
-  viewAngle: 72.92
+  viewRadius: 10
+  viewAngle: 75
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512
-  visibleTargets: []
+  visibleTargets:
+  - {fileID: 0}
   meshResolution: 1
   edgeResolveIterations: 0
   edgeDstThreshold: 0
