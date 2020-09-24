@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private DialogueManager dm;
+    private CutsceneManager cm;
     private Vector3 directionFacing = new Vector3(0,-1,0);
     private float speedTemp;
     private float speedDiag;
@@ -16,9 +17,13 @@ public class Player : MonoBehaviour
 
     public float speed;
     public float speedMult;
+
+    public GameObject buttonPrompt;
+
     private void Start()
     {
         dm = GameObject.FindObjectOfType<DialogueManager>();
+        cm = GameObject.FindObjectOfType<CutsceneManager>();
         speedTemp = speed; speedDiag = speed / 1.33f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -28,7 +33,7 @@ public class Player : MonoBehaviour
         //Check player stops
         if (dm != null)
         {
-            if (dm.GetIsDialoguing() || UIManager.isPaused)
+            if (dm.GetIsDialoguing() || UIManager.isPaused || cm.GetIsInCutscene())
             {
                 stopPlayer = true;
             }
@@ -36,6 +41,14 @@ public class Player : MonoBehaviour
         }
         //Draw debug line
         Debug.DrawLine(this.transform.position, this.transform.position + directionFacing, Color.green);
+
+        RaycastHit2D checkHit = Physics2D.BoxCast(transform.position, new Vector2(1f, 1f), 0, new Vector2(directionFacing.x, directionFacing.y), 1.2f, 1 << 8);
+
+        if (checkHit && !buttonPrompt.activeSelf && !DialogueManager.isDialoguing)
+            buttonPrompt.SetActive(true);
+        else if ((!checkHit && buttonPrompt.activeSelf ) || DialogueManager.isDialoguing)
+            buttonPrompt.GetComponent<Animator>().SetBool("Exit", true);
+
         //Interact
         if (Input.GetKeyDown(KeyCode.E))
         {

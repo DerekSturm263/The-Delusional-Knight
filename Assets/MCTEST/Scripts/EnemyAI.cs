@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Pathfinding;
 
 public class EnemyAI : MonoBehaviour
@@ -11,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     public float speed = 200;
     public float nextWaypointDistance = 4f;
 
+    AIPath aiPath;
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
@@ -19,6 +18,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        
         player = GameObject.FindGameObjectWithTag("Player");
         target = player.GetComponent<Transform>();
         seeker = GetComponent<Seeker>();

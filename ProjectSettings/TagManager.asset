@@ -7,6 +7,11 @@ TagManager:
   - CutsceneManager
   - DialogueManager
   - Unloadable
+  - MCTestAI
+  - MCTestWall
+  - MCAIPatrol
+  - UIManager
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -16,9 +21,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Interactable
+  - Wall
+  - Player
   - 
   - 
   - 

@@ -66,7 +66,7 @@ public class DialogueManager : MonoBehaviour
 
 		try
 		{
-			speaker1GUI.sprite = speaker1.Head.sprite;
+			speaker1GUI.sprite = speaker1.Head;
 		} catch { }
 		speaker1Name.text = speaker1.Name;
 
@@ -75,7 +75,7 @@ public class DialogueManager : MonoBehaviour
 			speaker2 = character2;
 			try
 			{
-				speaker2GUI.sprite = speaker2.Head.sprite;
+				speaker2GUI.sprite = speaker2.Head;
 			} catch { }
 			speaker2Name.text = speaker2.Name;
 
@@ -293,8 +293,11 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-		// Lets the user input "Fire1" to skip through dialogue.
-		if (Input.GetButtonDown("Fire1"))
-			SkipDialogue();
+		if (isDialoguing)
+		{
+			// Lets the user input "Fire1" to skip through dialogue.
+			if (Input.GetButtonDown("Fire1"))
+				SkipDialogue();
+		}
     }
 }

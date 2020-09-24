@@ -16,6 +16,9 @@ public class UIManager : MonoBehaviour
     public GameObject pauseUI;
     private Animator pauseUIAnimator;
 
+    public GameObject inventoryUI;
+    private Animator inventoryUIAnimator;
+
     public Button[] pauseButtons;
     public GameObject[] optionsActions;
 
@@ -24,6 +27,7 @@ public class UIManager : MonoBehaviour
     public GameObject optionsLayout;
 
     public static bool isPaused;
+    public static bool isInventoryOpen;
 
     public static bool isFullscreen = true;
     public static float musicVol = 1f;
@@ -33,7 +37,9 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         eventSystem = EventSystem.current;
+
         pauseUIAnimator = pauseUI.GetComponent<Animator>();
+        inventoryUIAnimator = inventoryUI.GetComponent<Animator>();
 
         MusicPlayer.Initialize();
         SoundPlayer.Initialize();
@@ -47,11 +53,22 @@ public class UIManager : MonoBehaviour
             else if (!optionsLayout.activeSelf) Resume();
             else Back();
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (!isInventoryOpen) OpenInventory();
+            else CloseInventory();
+        }
+
+        if (isInventoryOpen && (Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f))
+        {
+            CloseInventory();
+        }
     }
 
     public void Pause()
     {
-        if (pauseUI.activeSelf || CutsceneManager.isInCutscene || DialogueManager.isDialoguing)
+        if (pauseUI.activeSelf || CutsceneManager.isInCutscene || DialogueManager.isDialoguing || isInventoryOpen)
             return;
 
         isPaused = true;
@@ -90,6 +107,21 @@ public class UIManager : MonoBehaviour
         pauseButtonsLayout.SetActive(true);
         optionsLayout.SetActive(false);
         eventSystem.SetSelectedGameObject(pauseButtons[1].gameObject);
+    }
+
+    public void OpenInventory()
+    {
+        if (inventoryUI.activeSelf || CutsceneManager.isInCutscene || DialogueManager.isDialoguing || isPaused)
+            return;
+
+        isInventoryOpen = true;
+        inventoryUI.SetActive(true);
+    }
+
+    public void CloseInventory()
+    {
+        inventoryUIAnimator.SetBool("Exit", true);
+        isInventoryOpen = false;
     }
 
     public void ToggleFullscreen()
