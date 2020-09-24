@@ -11,6 +11,7 @@ TagManager:
   - MCTestWall
   - MCAIPatrol
   - UIManager
+  - Wall
   layers:
   - Default
   - TransparentFX
