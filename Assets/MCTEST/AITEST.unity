@@ -1374,15 +1374,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 237cc65751cf5bf4da15b8c1fd4179dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 14.6
-  viewAngle: 72.92
+  viewRadius: 10
+  viewAngle: 75
   targetMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   obstacleMask:
     serializedVersion: 2
     m_Bits: 512
-  visibleTargets: []
+  visibleTargets:
+  - {fileID: 0}
   meshResolution: 1
   edgeResolveIterations: 0
   edgeDstThreshold: 0
@@ -1561,6 +1562,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531080324315908069, guid: 83f2b2f5a8b6d0c4b83b8a8569f2cf44,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5531080324315908089, guid: 83f2b2f5a8b6d0c4b83b8a8569f2cf44,
         type: 3}
