@@ -14,6 +14,27 @@ TextureImporter:
   - first:
       213: -1400928621551134355
     second: brick_tilemap_3
+  - first:
+      213: -965053224740097419
+    second: brick_tilemap_0
+  - first:
+      213: 830931814268122624
+    second: brick_tilemap_1
+  - first:
+      213: 2708742469924929202
+    second: brick_tilemap_2
+  - first:
+      213: 5759662618633427405
+    second: brick_tilemap_3
+  - first:
+      213: -3127329609483793104
+    second: brick_tilemap_4
+  - first:
+      213: 1715667708968408292
+    second: brick_tilemap_5
+  - first:
+      213: 1687669827562920902
+    second: brick_tilemap_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,8 +146,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1930844535fe0aab0800000000000000
-      internalID: -4998732445205920879
+      spriteID: 572750684317b92f0800000000000000
+      internalID: -965053224740097419
       vertices: []
       indices: 
       edges: []
@@ -135,7 +156,7 @@ TextureImporter:
       name: brick_tilemap_1
       rect:
         serializedVersion: 2
-        x: 71
+        x: 70
         y: 0
         width: 70
         height: 70
@@ -146,8 +167,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0bfdd683b53d91f0800000000000000
-      internalID: -1036613294047233270
+      spriteID: 006b5062510188b00800000000000000
+      internalID: 830931814268122624
       vertices: []
       indices: 
       edges: []
@@ -156,7 +177,7 @@ TextureImporter:
       name: brick_tilemap_2
       rect:
         serializedVersion: 2
-        x: 142
+        x: 140
         y: 0
         width: 70
         height: 70
@@ -167,29 +188,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 170d69e25b054ea10800000000000000
-      internalID: 1937762478777094257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: brick_tilemap_3
-      rect:
-        serializedVersion: 2
-        x: 213
-        y: 0
-        width: 70
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6954c457d6ee8ce0800000000000000
-      internalID: -1400928621551134355
+      spriteID: 2beb3e3cce2679520800000000000000
+      internalID: 2708742469924929202
       vertices: []
       indices: 
       edges: []
