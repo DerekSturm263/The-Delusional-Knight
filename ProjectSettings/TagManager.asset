@@ -24,11 +24,7 @@ TagManager:
   - Interactable
   - Wall
   - Player
-<<<<<<< HEAD
-  - Target
-=======
   - Volume
->>>>>>> 54cf1bbd9763f886a633f81a62548ac5c3f23ac4
   - 
   - 
   - 
@@ -52,6 +48,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Particles
+    uniqueID: 3019262887
+    locked: 0
+  - name: Decoration
+    uniqueID: 2632742451
     locked: 0
   - name: UI
     uniqueID: 3202690591
