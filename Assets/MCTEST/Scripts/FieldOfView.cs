@@ -66,7 +66,7 @@ public class FieldOfView : MonoBehaviour
         }
     }
 
-    void DrawFieldOfView()
+    void DrawFieldOfView() //As the name says, draws the FOV effect.
     {
         int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
         float stepAngleSize = viewAngle / stepCount;
@@ -74,6 +74,7 @@ public class FieldOfView : MonoBehaviour
         ViewCastInfo oldViewCast = new ViewCastInfo();
         for (int i = 0; i <= stepCount; i++)
         {
+            // is this the rotation? need confirmation
             float angle = transform.eulerAngles.z - viewAngle / 2 + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(angle);
 
