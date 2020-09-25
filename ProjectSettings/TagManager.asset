@@ -24,7 +24,11 @@ TagManager:
   - Interactable
   - Wall
   - Player
-  - 
+<<<<<<< HEAD
+  - Target
+=======
+  - Volume
+>>>>>>> 54cf1bbd9763f886a633f81a62548ac5c3f23ac4
   - 
   - 
   - 
