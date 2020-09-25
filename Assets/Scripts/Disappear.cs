@@ -24,16 +24,18 @@ public class Disappear : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        rooms.Add(thisRoom, this);
+
+        if (!rooms.ContainsKey(thisRoom))
+            rooms.Add(thisRoom, this);
 
         if (!startsVisible)
             FadeOut();
+        else
+            currentRoom = thisRoom;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Player entered " + gameObject.name);
-
         if (col.CompareTag("Player"))
             ChangeRoom();
     }
@@ -45,6 +47,8 @@ public class Disappear : MonoBehaviour
 
         if (oldRoom == currentRoom)
             return;
+
+        Debug.Log("Player went from " + oldRoom + " to " + currentRoom + ".");
 
         roomNameGUI.gameObject.SetActive(true);
         roomNameGUI.text = rooms[currentRoom].roomName;

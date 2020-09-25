@@ -8,7 +8,7 @@ using UnityEngine.Rendering;
 
 public class UIManager : MonoBehaviour
 {
-    public static string objective = "Find something to tie the princess up with.";
+    public static string objective = "Get inside the castle.";
     public TMPro.TMP_Text objectiveText;
 
     private EventSystem eventSystem;
@@ -40,12 +40,21 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         eventSystem = EventSystem.current;
+        isPaused = false;
+        isInventoryOpen = false;
 
-        pauseUIAnimator = pauseUI.GetComponent<Animator>();
-        inventoryUIAnimator = inventoryUI.GetComponent<Animator>();
+        if (pauseUI != null) pauseUIAnimator = pauseUI.GetComponent<Animator>();
+        if (inventoryUI != null) inventoryUIAnimator = inventoryUI.GetComponent<Animator>();
 
         MusicPlayer.Initialize();
         SoundPlayer.Initialize();
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
+        {
+            Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
+            lights2D.SetActive((hasFancyGraphics) ? true : false);
+            lightGlobal.SetActive((!hasFancyGraphics) ? true : false);
+        }
     }
 
     private void Update()
@@ -88,7 +97,7 @@ public class UIManager : MonoBehaviour
 
     public void Options()
     {
-        objectiveGO.SetActive(false);
+        if (objectiveGO != null) objectiveGO.SetActive(false);
         pauseButtonsLayout.SetActive(false);
         optionsLayout.SetActive(true);
         eventSystem.SetSelectedGameObject(optionsActions[0]);
@@ -106,10 +115,20 @@ public class UIManager : MonoBehaviour
 
     public void Back()
     {
-        objectiveGO.SetActive(true);
+        if (objectiveGO != null) objectiveGO.SetActive(true);
         pauseButtonsLayout.SetActive(true);
         optionsLayout.SetActive(false);
         eventSystem.SetSelectedGameObject(pauseButtons[1].gameObject);
+    }
+
+    public void OnStart()
+    {
+        SceneManager.LoadScene("Main");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     public void OpenInventory()
@@ -148,8 +167,12 @@ public class UIManager : MonoBehaviour
     public void ToggleFancyGraphics()
     {
         hasFancyGraphics = !hasFancyGraphics;
-        Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
-        lights2D.SetActive((hasFancyGraphics) ? true : false);
-        lightGlobal.SetActive((!hasFancyGraphics) ? true : false);
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
+        {
+            Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
+            lights2D.SetActive((hasFancyGraphics) ? true : false);
+            lightGlobal.SetActive((!hasFancyGraphics) ? true : false);
+        }
     }
 }

@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject settingsMenu;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("Movement");
+        SceneManager.LoadScene("Main");
         Debug.Log("Start Game");
     }
     public void QuitGame()
@@ -19,7 +21,13 @@ public class MainMenu : MonoBehaviour
     public void NextCredit()
     {
         SceneManager.LoadScene("Credits");
-        SceneManager.LoadScene(2);
         Debug.Log("Credits");
-            }
+    
+    
+    }
+
+    public void OpenSettings()
+    {
+
+    }
 }
