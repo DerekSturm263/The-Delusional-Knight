@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Disappear : MonoBehaviour
 {
@@ -15,21 +16,26 @@ public class Disappear : MonoBehaviour
 
     private Animator anim;
     public Room thisRoom;
+    public string roomName;
     public bool startsVisible;
+
+    public TMPro.TMP_Text roomNameGUI;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        rooms.Add(thisRoom, this);
+
+        if (!rooms.ContainsKey(thisRoom))
+            rooms.Add(thisRoom, this);
 
         if (!startsVisible)
             FadeOut();
+        else
+            currentRoom = thisRoom;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Player entered " + gameObject.name);
-
         if (col.CompareTag("Player"))
             ChangeRoom();
     }
@@ -42,8 +48,10 @@ public class Disappear : MonoBehaviour
         if (oldRoom == currentRoom)
             return;
 
-        Debug.Log(oldRoom);
-        Debug.Log(currentRoom);
+        Debug.Log("Player went from " + oldRoom + " to " + currentRoom + ".");
+
+        roomNameGUI.gameObject.SetActive(true);
+        roomNameGUI.text = rooms[currentRoom].roomName;
 
         rooms[currentRoom].FadeIn();
         rooms[oldRoom].FadeOut();
