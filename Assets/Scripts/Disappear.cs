@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Disappear : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class Disappear : MonoBehaviour
 
     private Animator anim;
     public Room thisRoom;
+    public string roomName;
     public bool startsVisible;
+
+    public TMPro.TMP_Text roomNameGUI;
 
     private void Awake()
     {
@@ -42,8 +46,8 @@ public class Disappear : MonoBehaviour
         if (oldRoom == currentRoom)
             return;
 
-        Debug.Log(oldRoom);
-        Debug.Log(currentRoom);
+        roomNameGUI.gameObject.SetActive(true);
+        roomNameGUI.text = rooms[currentRoom].roomName;
 
         rooms[currentRoom].FadeIn();
         rooms[oldRoom].FadeOut();
