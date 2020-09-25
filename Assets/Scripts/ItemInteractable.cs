@@ -36,21 +36,28 @@ public class ItemInteractable : Interactable
         {
             if (!hasUsed)
             {
-                if (!Inventroy.items.Contains(requiredItem))
+                if (!Inventroy.items.Contains(requiredItem) && requiredItem != null)
                 {
                     dm.WriteDialogue(AllDialogue.GetDialogueByID(alternateDialogueNum), Characters.player);
                 }
                 else
                 {
-                    int index = Inventroy.items.IndexOf(requiredItem);
-                    foreach (Transform t in inventory.slots[index].GetComponentsInChildren<Transform>())
+                    if (requiredItem != null)
                     {
-                        if (t.gameObject != inventory.slots[index])
-                            Destroy(t.gameObject);
+                        int index = Inventroy.items.IndexOf(requiredItem);
+                        foreach (Transform t in inventory.slots[index].GetComponentsInChildren<Transform>())
+                        {
+                            if (t.gameObject != inventory.slots[index])
+                                Destroy(t.gameObject);
+                        }
                     }
-;
+
+                    if (dialogueNum != -1)
+                    {
+                        dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player);
+                    }
+
                     GetComponent<SpriteRenderer>().sprite = secondSprite;
-                    dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player);
                     hasUsed = true;
                     GetComponent<BoxCollider2D>().enabled = false;
                 }

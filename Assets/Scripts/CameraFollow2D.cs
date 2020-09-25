@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
+[ExecuteAlways]
 public class CameraFollow2D : MonoBehaviour
     {
         public float FollowSpeed = 2f;
