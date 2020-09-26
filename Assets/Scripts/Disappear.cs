@@ -21,9 +21,17 @@ public class Disappear : MonoBehaviour
 
     public TMPro.TMP_Text roomNameGUI;
 
+    public List<GameObject> torches;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
+
+        ParticleSystem[] torchesPS = GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in torchesPS)
+        {
+            torches.Add(ps.gameObject);
+        }
 
         if (!rooms.ContainsKey(thisRoom))
             rooms.Add(thisRoom, this);
@@ -64,10 +72,7 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Exit", true);
         anim.SetBool("Enter", false);
 
-        foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
-        {
-            ps.Stop();
-        }
+        torches.ForEach(x => x.SetActive(false));
     }
 
     public void FadeIn()
@@ -75,9 +80,6 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Enter", true);
         anim.SetBool("Exit", false);
 
-        foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
-        {
-            ps.Play();
-        }
+        torches.ForEach(x => x.SetActive(true));
     }
 }

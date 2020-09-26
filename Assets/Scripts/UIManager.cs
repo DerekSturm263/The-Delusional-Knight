@@ -34,9 +34,6 @@ public class UIManager : MonoBehaviour
     public static float soundVol = 1f;
     public static bool hasFancyGraphics = true;
 
-    public GameObject lights2D;
-    public GameObject lightGlobal;
-
     private void Awake()
     {
         eventSystem = EventSystem.current;
@@ -52,8 +49,6 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
         {
             Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
-            lights2D.SetActive((hasFancyGraphics) ? true : false);
-            lightGlobal.SetActive((!hasFancyGraphics) ? true : false);
         }
     }
 
@@ -171,8 +166,6 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
         {
             Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
-            lights2D.SetActive((hasFancyGraphics) ? true : false);
-            lightGlobal.SetActive((!hasFancyGraphics) ? true : false);
         }
     }
 }
