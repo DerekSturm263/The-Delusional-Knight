@@ -27,8 +27,6 @@ public class Disappear : MonoBehaviour
 
         if (!rooms.ContainsKey(thisRoom))
             rooms.Add(thisRoom, this);
-        else
-            rooms[thisRoom] = this;
 
         if (!startsVisible)
             FadeOut();
