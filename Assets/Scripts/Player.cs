@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
         //change directino facing
         animator.SetFloat("xDir", rb.velocity.x);
         animator.SetFloat("yDir", rb.velocity.y);
+        animator.SetFloat("Up", rb.velocity.y);
     }
     public void ChangeDirectionX(int xDir)
     {
@@ -110,6 +111,10 @@ public class Player : MonoBehaviour
     }
     public void ChangeDirectionY(int yDir)
     {
-        directionFacing.y = yDir;
+        directionFacing.y -= yDir;
+    }
+    public void ChangeDirectionY2(int Up)
+    {
+        directionFacing.y = Up;
     }
 }
