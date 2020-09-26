@@ -27,6 +27,8 @@ public class Disappear : MonoBehaviour
 
         if (!rooms.ContainsKey(thisRoom))
             rooms.Add(thisRoom, this);
+        else
+            rooms[thisRoom] = this;
 
         if (!startsVisible)
             FadeOut();
@@ -61,11 +63,21 @@ public class Disappear : MonoBehaviour
     {
         anim.SetBool("Exit", true);
         anim.SetBool("Enter", false);
+
+        foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Stop();
+        }
     }
 
     public void FadeIn()
     {
         anim.SetBool("Enter", true);
         anim.SetBool("Exit", false);
+
+        foreach (ParticleSystem ps in GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Play();
+        }
     }
 }
