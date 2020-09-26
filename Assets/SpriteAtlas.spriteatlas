@@ -34,7 +34,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: be25ef5c62d1c3a438b7c4c00a0b7eb1, type: 3}
     - {fileID: 2800000, guid: 31502c34e8d2d8f40bd172c1e4e1e03f, type: 3}
     - {fileID: 2800000, guid: 0b11b43d9d4650d40a593f4ea103f327, type: 3}
-    - {fileID: 21300000, guid: cfc71605c8bf6ac46b080ad89279f747, type: 3}
     - {fileID: 21300000, guid: b47038288a0c32649b7664f73acec0ce, type: 3}
     - {fileID: 2800000, guid: 41ff10bec740e694eb8f11fc93da071d, type: 3}
     - {fileID: 21300000, guid: 2e06ae25f557e4f46bedbe5e20f0c619, type: 3}
@@ -44,7 +43,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: f5aff37e28e910c45a4b8124f144695e, type: 3}
     - {fileID: 2800000, guid: ea445cdfca335684baa3a3ff3c53cedf, type: 3}
     - {fileID: 2800000, guid: 1049542e48a690747a116006d4b82415, type: 3}
-    totalSpriteSurfaceArea: 229024
+    totalSpriteSurfaceArea: 209424
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -55,7 +54,6 @@ SpriteAtlas:
   - {fileID: -2842880358379135964, guid: 31502c34e8d2d8f40bd172c1e4e1e03f, type: 3}
   - {fileID: 6990742791997637695, guid: 31502c34e8d2d8f40bd172c1e4e1e03f, type: 3}
   - {fileID: 4666168130798563010, guid: 31502c34e8d2d8f40bd172c1e4e1e03f, type: 3}
-  - {fileID: 21300000, guid: cfc71605c8bf6ac46b080ad89279f747, type: 3}
   - {fileID: 21300000, guid: 2e06ae25f557e4f46bedbe5e20f0c619, type: 3}
   - {fileID: 21300000, guid: b47038288a0c32649b7664f73acec0ce, type: 3}
   - {fileID: -5858471790780216811, guid: e81b8709253b8e649b8a44ace1ef163b, type: 3}
@@ -102,7 +100,6 @@ SpriteAtlas:
   - stairs_tilemap_2
   - stairs_tilemap_1
   - stairs_tilemap_0
-  - door_tile_map
   - grass_2
   - wood_7
   - Rug_tile_map_0
