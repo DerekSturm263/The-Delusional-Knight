@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : VersionedMonoBehaviour
 {
 
     public Transform target;
@@ -10,6 +10,7 @@ public class EnemyAI : MonoBehaviour
     public float nextWaypointDistance = 4f;
 
     AIPath aiPath;
+    AIBase aiBase;
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
@@ -25,12 +26,14 @@ public class EnemyAI : MonoBehaviour
         rb2 = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
+        aiPath.enableRotation = true;
     }
 
     void UpdatePath()
     {
         if(seeker.IsDone())
            seeker.StartPath(rb2.position, target.position, OnPathComplete);
+       
     }
 
     void OnPathComplete(Path p)

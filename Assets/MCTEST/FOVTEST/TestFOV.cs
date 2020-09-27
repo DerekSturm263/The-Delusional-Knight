@@ -13,16 +13,22 @@ public class TestFOV : MonoBehaviour
 
     [HideInInspector]
     public List<Transform> visibleTargets = new List<Transform>();
+    public Transform pT;
+    Transform target;
 
     public float meshResolution;
+    public bool spotted;
 
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
 
 
+
     private void Start()
     {
+
+        
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
@@ -38,21 +44,37 @@ public class TestFOV : MonoBehaviour
         }
     }
 
+    IEnumerator WaitTime(float time, bool change)
+    {
+        yield return new WaitForSeconds(time);
+        change = false;
+    }
+
     private void Update()
     {
+        pT = GameObject.FindGameObjectWithTag("Player").transform;
         DrawFieldOfView();
+        //FindVisibleTargets();
+        if(spotted)
+        {
+            GetComponent<AIControl>().playerSpotted = true;
+            //StartCoroutine(WaitTime(0.2f, spotted));
+        }
+        
     }
+
+   
 
 
     void FindVisibleTargets()
     {
-        visibleTargets.Clear();
+        visibleTargets.Clear(); //clears the list of any targets
         //ALL ENEMIES REQUIRE COLLIDERS FOR THIS TO WORK!!!!
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
         //This Finds Enemies in the FOV Area- isnt visualized yet, but math wise its there
-        for(int i = 0; i <targetsInViewRadius.Length; i++)
+        for(int i = 0; i < targetsInViewRadius.Length; i++)
         {
-            Transform target = targetsInViewRadius[i].transform;
+            target = targetsInViewRadius[i].transform; //targets transform (player)
             Vector2 dirToTarget = (target.position - transform.position).normalized;
             if(Vector2.Angle(transform.up, dirToTarget) < viewAngle /2)
             {
@@ -60,7 +82,9 @@ public class TestFOV : MonoBehaviour
                 if(!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
-                }
+                    Debug.Log("player spotted");
+                    spotted = true;
+                } 
             }
         }
     }
@@ -88,7 +112,7 @@ public class TestFOV : MonoBehaviour
         {
             vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
             
-            if ( i < vertexCount -2)
+            if ( i < vertexCount -2) //math shiz
             {
                 triangles[i * 3] = 0;
                 triangles[i * 3 + 1] = i + 1;
@@ -96,10 +120,28 @@ public class TestFOV : MonoBehaviour
             }
           
         }
+        //this draws the FOV thing thats visible. 
         viewMesh.Clear();
         viewMesh.vertices = vertices;
         viewMesh.triangles = triangles;
         viewMesh.RecalculateNormals();
+    }
+
+    private void LateUpdate()
+    {
+        if(spotted)
+        {
+            Debug.Log("Player is being detected! " + spotted + " .");
+        }
+        //if (visibleTargets.Contains(target))
+        //{
+        //    if (Vector3.Distance(target.position, pT.position) <= 0.2f)
+        //    {
+        //        spotted = true;
+        //    }
+        //    else spotted = false;
+
+        //}
     }
 
     ViewCastInfo ViewCast(float globalAngle)

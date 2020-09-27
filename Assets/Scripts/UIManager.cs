@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            GetComponent<AudioManager>().Play("Button");
             if (!isPaused) Pause();
             else if (!optionsLayout.activeSelf) Resume();
             else Back();
@@ -68,6 +69,7 @@ public class UIManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            GetComponent<AudioManager>().Play("Button");
             if (!isInventoryOpen) OpenInventory();
             else CloseInventory();
         }
@@ -82,7 +84,7 @@ public class UIManager : MonoBehaviour
     {
         if (pauseUI.activeSelf || CutsceneManager.isInCutscene || DialogueManager.isDialoguing || isInventoryOpen)
             return;
-
+        GetComponent<AudioManager>().Play("Button");
         isPaused = true;
         pauseUI.SetActive(true);
         objectiveText.text = "Current Objective:\n" + objective;
@@ -91,12 +93,14 @@ public class UIManager : MonoBehaviour
 
     public void Resume()
     {
+        GetComponent<AudioManager>().Play("Button");
         pauseUIAnimator.SetBool("Exit", true);
         isPaused = false;
     }
 
     public void Options()
     {
+        GetComponent<AudioManager>().Play("Button");
         if (objectiveGO != null) objectiveGO.SetActive(false);
         pauseButtonsLayout.SetActive(false);
         optionsLayout.SetActive(true);
@@ -105,16 +109,19 @@ public class UIManager : MonoBehaviour
 
     public void Credits()
     {
+        GetComponent<AudioManager>().Play("Button");
         SceneManager.LoadScene("Credits");
     }
 
     public void Title()
     {
+        GetComponent<AudioManager>().Play("Button");
         SceneManager.LoadScene("StartTitle");
     }
 
     public void Back()
     {
+        GetComponent<AudioManager>().Play("Button");
         if (objectiveGO != null) objectiveGO.SetActive(true);
         pauseButtonsLayout.SetActive(true);
         optionsLayout.SetActive(false);
@@ -123,11 +130,13 @@ public class UIManager : MonoBehaviour
 
     public void OnStart()
     {
+        GetComponent<AudioManager>().Play("Button");
         SceneManager.LoadScene("Main");
     }
 
     public void Quit()
     {
+        GetComponent<AudioManager>().Play("Button");
         Application.Quit();
     }
 
@@ -136,18 +145,21 @@ public class UIManager : MonoBehaviour
         if (inventoryUI.activeSelf || CutsceneManager.isInCutscene || DialogueManager.isDialoguing || isPaused)
             return;
 
+        GetComponent<AudioManager>().Play("Button");
         isInventoryOpen = true;
         inventoryUI.SetActive(true);
     }
 
     public void CloseInventory()
     {
+        GetComponent<AudioManager>().Play("Button");
         inventoryUIAnimator.SetBool("Exit", true);
         isInventoryOpen = false;
     }
 
     public void ToggleFullscreen()
     {
+        GetComponent<AudioManager>().Play("Button");
         isFullscreen = !isFullscreen;
         Screen.fullScreen = isFullscreen;
     }
@@ -170,6 +182,7 @@ public class UIManager : MonoBehaviour
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Main"))
         {
+            GetComponent<AudioManager>().Play("Button");
             Camera.main.GetComponent<Volume>().enabled = (hasFancyGraphics) ? true : false;
             lights2D.SetActive((hasFancyGraphics) ? true : false);
             lightGlobal.SetActive((!hasFancyGraphics) ? true : false);

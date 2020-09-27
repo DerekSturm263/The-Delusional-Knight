@@ -17,6 +17,7 @@ public class AIPatrol : VersionedMonoBehaviour
 
     protected override void Awake()
     {
+       
         base.Awake();
         agent = GetComponent<IAstarAI>();
     }
