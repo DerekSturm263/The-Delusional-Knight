@@ -17,6 +17,7 @@ public class SpecialDialogue : Interactable
     private bool hasSpokenTo;
     private bool content;
     public bool isKing;
+    public bool isPrincess;
 
     private void Awake()
     {
@@ -79,8 +80,12 @@ public class SpecialDialogue : Interactable
                         content = true;
 
                         if (isKing)    PrincessDoor.isOpen = true;
+                        if (isPrincess)
+                        {
+                            gameObject.SetActive(false);
+                            GameManager.canViewFinalCutscene = true;
+                        }
                     }
-
                 }
                 else
                 {

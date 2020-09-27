@@ -12,6 +12,7 @@ public class Npc : Interactable
     public string npcName;
     public GameObject item;
     private bool hasSpokenTo;
+    public int finalDialogueNum;
 
     private void Awake()
     {
@@ -29,42 +30,50 @@ public class Npc : Interactable
 
         if (!dm.GetIsDialoguing())
         {
-            if (item == null)
+            if (GameManager.canViewFinalCutscene)
             {
-                if (!hasSpokenTo)
-                {
-                    dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
-                    hasSpokenTo = true;
-                }
-                else
-                {
-                    dm.WriteDialogue(AllDialogue.GetDialogueByID(alternateDialogueNum), Characters.player, Characters.CharacterByName(npcName));
-                }
+                dm.WriteDialogue(AllDialogue.GetDialogueByID(finalDialogueNum), Characters.player, Characters.CharacterByName(npcName));
             }
             else
             {
-                if (!hasSpokenTo)
+
+                if (item == null)
                 {
-                    dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
-                    dm.SetEndOfDialogue(() =>
+                    if (!hasSpokenTo)
                     {
-                        for (int i = 0; i < inventory.slots.Length; i++)
-                        {
-                            if (inventory.isFull[i] == false)
-                            {
-                                // Item can be in inventory
-                                inventory.isFull[i] = true;
-                                Instantiate(item, inventory.slots[i].transform, false);
-                                Inventroy.items.Add(item);
-                                break;
-                            }
-                        }
-                    });
-                    hasSpokenTo = true;
+                        dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                        hasSpokenTo = true;
+                    }
+                    else
+                    {
+                        dm.WriteDialogue(AllDialogue.GetDialogueByID(alternateDialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                    }
                 }
                 else
                 {
-                    dm.WriteDialogue(AllDialogue.GetDialogueByID(alternateDialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                    if (!hasSpokenTo)
+                    {
+                        dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                        dm.SetEndOfDialogue(() =>
+                        {
+                            for (int i = 0; i < inventory.slots.Length; i++)
+                            {
+                                if (inventory.isFull[i] == false)
+                                {
+                                // Item can be in inventory
+                                inventory.isFull[i] = true;
+                                    Instantiate(item, inventory.slots[i].transform, false);
+                                    Inventroy.items.Add(item);
+                                    break;
+                                }
+                            }
+                        });
+                        hasSpokenTo = true;
+                    }
+                    else
+                    {
+                        dm.WriteDialogue(AllDialogue.GetDialogueByID(alternateDialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                    }
                 }
             }
         }

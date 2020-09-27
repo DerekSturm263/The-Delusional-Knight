@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Sprite kingHead;
 
     public GameObject cutsceneLoc;
+    public static bool canViewFinalCutscene;
 
     private void Start()
     {

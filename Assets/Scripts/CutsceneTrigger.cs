@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CutsceneTrigger : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class CutsceneTrigger : MonoBehaviour
     public string cutsceneName;
     public string afterCutsceneEvent;
     private CutsceneManager cm;
+    public bool needsRequirement;
 
     private void Awake()
     {
@@ -16,7 +18,10 @@ public class CutsceneTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        cm.BeginCutscene(cutscene, cutsceneName, afterCutsceneEvent);
-        gameObject.SetActive(false);
+        if (!needsRequirement || GameManager.canViewFinalCutscene)
+        {
+            cm.BeginCutscene(cutscene, cutsceneName, afterCutsceneEvent);
+            gameObject.SetActive(false);
+        }
     }
 }

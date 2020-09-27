@@ -105,7 +105,6 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Enter", false);
 
         torches.ForEach(x => x.SetActive(false));
-        torches.ForEach(x => x.GetComponent<ParticleSystem>().Play());
         spriteRenders.ForEach(x => { try { x.enabled = false;  } catch { } });
         boxColliders.ForEach(x => { try { x.enabled = false; } catch { } });
     }
@@ -116,7 +115,6 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Exit", false);
 
         torches.ForEach(x => x.SetActive(true));
-        torches.ForEach(x => x.GetComponent<ParticleSystem>().Stop());
         spriteRenders.ForEach(x => { try { x.enabled = true; } catch { } });
         boxColliders.ForEach(x => { try { x.enabled = true; } catch { } });
     }

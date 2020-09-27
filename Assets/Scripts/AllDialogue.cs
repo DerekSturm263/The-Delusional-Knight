@@ -42,7 +42,7 @@ public static class AllDialogue
     public static SpeechBubble flashback3B = new SpeechBubble(23, Characters.witch, "Hahahahahahahaha!");
     public static SpeechBubble flashback3C = new SpeechBubble(24, Characters.player, "What's so funny? You know there's no way I'd do your bidding.");
     public static SpeechBubble flashback3D = new SpeechBubble(25, Characters.witch, "We'll see about that! Take this!");
-    public static SpeechBubble flashback3Over = new SpeechBubble(26, Characters.player, "What did she do to me? I need to see what this is all about!");
+    public static SpeechBubble flashback3Over = new SpeechBubble(26, Characters.player, "I remember now! That evil hag put a spell on me! Oh no, what will happen to the princess and I now?");
 
     // Witch conversation outside castle.
     public static SpeechBubble convoWithWitch1 = new SpeechBubble(36, Characters.witch, "What do you need to know?");
@@ -87,7 +87,7 @@ public static class AllDialogue
     public static SpeechBubble convoInStorageRoom17 = new SpeechBubble(55, Characters.guard, "Thanks for the wine!"); // Goes back to here after talking to him after giving him the wine.
 
     // Princess conversation in her room.
-    public static SpeechBubble convoInPrincessRoom = new SpeechBubble(60, Characters.princess, "Oh, sir Dagon! Why are you here at this late hour? Is something the matter?");
+    public static SpeechBubble convoInPrincessRoom = new SpeechBubble(60, Characters.princess, "Oh, Sir Dagon! Why are you here at this late hour? Is something the matter?");
     public static SpeechBubble convoInPrincessRoom2 = new SpeechBubble(61, Characters.player, "I'm here to rescue you, my fair maiden.");
     public static SpeechBubble convoInPrincessRoom3 = new SpeechBubble(62, Characters.princess, "Rescue me? But I'm safe here in my room.");
     public static SpeechBubble convoInPrincessRoom4 = new SpeechBubble(63, Characters.player, "Nonsense, the king has tricked you! He will do terrible things to you and you need to come with me.");
@@ -152,6 +152,12 @@ public static class AllDialogue
     public static SpeechBubble witchConvo8 = new SpeechBubble(111, Characters.witch, "From King Peter. The princess doesn't know it but she's in dire need of saving.");
     public static SpeechBubble witchConvo9 = new SpeechBubble(112, Characters.player, "Really? Well, I guess I should go save her then. It's my duty as a knight to protect my people.");
     public static SpeechBubble witchConvo10 = new SpeechBubble(113, Characters.witch, "Indeed. Haha... Talk to me if you have any questions.");
+
+    public static SpeechBubble finalConvoWithWitch = new SpeechBubble(114, Characters.witch, "Ah, my fair knight. I'm so glad you have arrived.");
+    public static SpeechBubble finalConvoWithWitch2 = new SpeechBubble(115, Characters.witch, "I see that you have the princess with you. Nicely done.");
+    public static SpeechBubble finalConvoWithWitch3 = new SpeechBubble(116, Characters.witch, "She's now safe from that evil-");
+    public static SpeechBubble finalConvoWithWitch4 = new SpeechBubble(117, Characters.player, "No! I know who you are, I know what you did! There's no way I'm handing th princess over to you now!");
+    public static SpeechBubble finalConvoWithWitch5 = new SpeechBubble(118, Characters.player, "");
 
     public static void Initialize()
     {
