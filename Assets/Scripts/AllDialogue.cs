@@ -16,8 +16,8 @@ public static class AllDialogue
     public static SpeechBubble OwO = new SpeechBubble(6, Characters.player, "Wait, what's this? A wet rag?");
     public static SpeechBubble stove = new SpeechBubble(7, Characters.player, "Smells like something's burning.");
     public static SpeechBubble needKey2 = new SpeechBubble(8, Characters.player, "It's locked.");
-
-    // Flashbacks.
+    public static SpeechBubble hasKey2 = new SpeechBubble(56, Characters.player, "Oh, a key. I can probably use this to get into the princess's room.");
+    public static SpeechBubble needKey3 = new SpeechBubble(57, Characters.player, "Huh? I thought that would work. Was there anywhere else in the castle that was locked?");
 
     // Memory 1.
     public static SpeechBubble flashback1A = new SpeechBubble(9, Characters.guard, "Dagon, did you hear what the townspeople have been saying?");
@@ -43,10 +43,14 @@ public static class AllDialogue
     public static SpeechBubble flashback3D = new SpeechBubble(25, Characters.witch, "We'll see about that! Take this!");
     public static SpeechBubble flashback3Over = new SpeechBubble(26, Characters.player, "What did she do to me? I need to see what this is all about!");
 
-    // Conversations.
+    // Witch conversation outside castle.
+    public static SpeechBubble convoWithWitch1 = new SpeechBubble(36, Characters.player, "What should I do first?");
+    public static SpeechBubble convoWithWitch2 = new SpeechBubble(37, Characters.witch, "You need to get inside the castle dum-dum.");
+    public static SpeechBubble convoWithWitch3 = new SpeechBubble(38, Characters.player, "Oh, right.");
 
+    // Guard conversation in Break Room.
     public static SpeechBubble convoInBreakRoom = new SpeechBubble(27, Characters.guard, "I would capture you but I'm on break.");
-    public static SpeechBubble convoInBreakRoom2 = new SpeechBubble(28, Characters.player, new List<string> { "What's up with the princess?", "How do I sneak past guards?", "Goodbye" });
+    public static SpeechBubble convoInBreakRoom2 = new SpeechBubble(28, Characters.player, new List<string> { "What's up with the princess?", "How do I sneak past guards?", "Goodbye." });
     public static SpeechBubble convoInBreakRoom3 = new SpeechBubble(29, Characters.player, "What's up with the princess? I didn't see her.");
     public static SpeechBubble convoInBreakRoom4 = new SpeechBubble(30, Characters.player, "How do I sneak past the guards in the halls?");
     public static SpeechBubble convoInBreakRoom5 = new SpeechBubble(31, Characters.player, "Goodbye.");
@@ -54,6 +58,26 @@ public static class AllDialogue
     public static SpeechBubble convoInBreakRoom8 = new SpeechBubble(33, Characters.player, "No reason...");
     public static SpeechBubble convoInBreakRoom9 = new SpeechBubble(34, Characters.guard, "I can tell you one thing, it's very hard to see in these helmets. It would be even harder to see if the lights were out.");
     public static SpeechBubble convoInBreakRoom10 = new SpeechBubble(35, Characters.guard, "Wait, should I have told you that?");
+
+    // Guard conversation in Storage Room.
+    public static SpeechBubble convoInStorageRoom = new SpeechBubble(39, Characters.guard, "*Hic*, who goes there?");
+    public static SpeechBubble convoInStorageRoom2 = new SpeechBubble(40, Characters.guard, "Ya tryin' ta kidnap the princess?");
+    public static SpeechBubble convoInStorageRoom3 = new SpeechBubble(41, Characters.player, "Quite the opposite, actually, I'm trying to save her.");
+    public static SpeechBubble convoInStorageRoom4 = new SpeechBubble(42, Characters.guard, "Ya are? Well, good for you!");
+    public static SpeechBubble convoInStorageRoom5 = new SpeechBubble(43, Characters.guard, "Whadya want?");
+    public static SpeechBubble convoInStorageRoom6 = new SpeechBubble(44, Characters.player, new List<string> { "Are you sitting on some rope?", "Are you drunk?", "Goodbye." });
+    public static SpeechBubble convoInStorageRoom7 = new SpeechBubble(45, Characters.player, "Are you sitting on some rope? Can I have it?");
+    public static SpeechBubble convoInStorageRoom8 = new SpeechBubble(46, Characters.player, "Are you drunk?");
+    public static SpeechBubble convoInStorageRoom9 = new SpeechBubble(47, Characters.player, "Goodbye.");
+    public static SpeechBubble convoInStorageRoom10 = new SpeechBubble(48, Characters.guard, "Why this thing? Oh ya, it makes a great seat on the floor.");
+    public static SpeechBubble convoInStorageRoom11 = new SpeechBubble(49, Characters.guard, "How 'bout this. If ya answer me little riddle and bring me what I want, then sure you can have it.");
+    public static SpeechBubble convoInStorageRoom12 = new SpeechBubble(50, Characters.guard, "Here is the riddle:");
+    public static SpeechBubble convoInStorageRoom13 = new SpeechBubble(51, Characters.guard, "Go to the chamber where people feed the stomachs of men and retrieve the red blood that hazes the mind.");
+    public static SpeechBubble convoInStorageRoom14 = new SpeechBubble(52, Characters.guard, "Do ya wanna hear it again?");
+    public static SpeechBubble convoInStorageRoom15 = new SpeechBubble(53, Characters.player, new List<string> { "Yes.", "No" });
+
+    public static SpeechBubble convoInStorageRoom16 = new SpeechBubble(54, Characters.guard, "Ah, you got me item I asked for. As promised, here's the rope.");
+    public static SpeechBubble convoInStorageRoom17 = new SpeechBubble(55, Characters.guard, "Thanks for the wine!");
 
     public static void Initialize()
     {
@@ -87,6 +111,10 @@ public static class AllDialogue
         flashback3C.SetLines(new List<SpeechBubble> { flashback3D });
         flashback3D.SetLines();
         flashback3Over.SetLines();
+
+        convoWithWitch1.SetLines(new List<SpeechBubble> { convoWithWitch2 });
+        convoWithWitch2.SetLines(new List<SpeechBubble> { convoWithWitch3 });
+        convoWithWitch3.SetLines();
 
         convoInBreakRoom.SetLines(new List<SpeechBubble> { convoInBreakRoom2 });
         convoInBreakRoom2.SetLines(new List<SpeechBubble> { convoInBreakRoom3, convoInBreakRoom4, convoInBreakRoom5 });

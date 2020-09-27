@@ -35,6 +35,8 @@ public class Disappear : MonoBehaviour
     public List<GameObject> torches;
 
     public List<TilemapCollider2D> colliders;
+    public List<SpriteRenderer> spriteRenders;
+    public List<BoxCollider2D> boxColliders;
 
     public GameObject floorCollider;
 
@@ -48,6 +50,9 @@ public class Disappear : MonoBehaviour
             torches.Add(ps.gameObject);
         }
         colliders = GetComponentsInChildren<TilemapCollider2D>().ToList();
+        spriteRenders = GetComponentsInChildren<SpriteRenderer>().ToList();
+        boxColliders = GetComponentsInChildren<BoxCollider2D>().ToList();
+        boxColliders.RemoveAll(x => x.gameObject.GetComponent<ItemInteractable>());
 
         if (!rooms.ContainsKey(thisRoom))
             rooms.Add(thisRoom, this);
@@ -100,6 +105,8 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Enter", false);
 
         torches.ForEach(x => x.SetActive(false));
+        spriteRenders.ForEach(x => x.enabled = false);
+        boxColliders.ForEach(x => x.enabled = false);
     }
 
     public void FadeIn()
@@ -108,5 +115,7 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Exit", false);
 
         torches.ForEach(x => x.SetActive(true));
+        spriteRenders.ForEach(x => x.enabled = true);
+        boxColliders.ForEach(x => x.enabled = true);
     }
 }
