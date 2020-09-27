@@ -266,6 +266,8 @@ public class DialogueManager : MonoBehaviour
 		SwitchSpeaker(true);
 		responseNum = -1;
 
+		EventSystem.current.SetSelectedGameObject(null);
+
 		finishedWriting = false;
 		Transform[] responseArray = responsesLayout.GetComponentsInChildren<Transform>();
 		foreach (Transform response in responseArray)
@@ -279,7 +281,11 @@ public class DialogueManager : MonoBehaviour
 			Button newResponse = Instantiate(buttonTemplate, responsesLayout.transform);
 			newResponse.GetComponentInChildren<Text>().text = response;
 			newResponse.GetComponent<Response>().responseNum = responses.IndexOf(response);
-        }
+
+			if (EventSystem.current.currentSelectedGameObject == null)
+				EventSystem.current.SetSelectedGameObject(newResponse.gameObject);
+
+		}
 
 		finishedWriting = true;
 		yield return null;
