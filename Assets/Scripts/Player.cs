@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
 
     public GameObject buttonPrompt;
 
+
+
     private void Start()
     {
         dm = GameObject.FindObjectOfType<DialogueManager>();

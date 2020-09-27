@@ -8,6 +8,9 @@ TagManager:
   - UIManager
   - DialogueManager
   - CutsceneManager
+  - MCTestWall
+  - MCAIPatrol
+  - MCTestAI
   layers:
   - Default
   - TransparentFX
@@ -22,9 +25,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - AI
+  - Player
+  - Obstacle
   - 
   - 
   - 
