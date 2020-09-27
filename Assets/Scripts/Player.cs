@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         speedTemp = speed; speedDiag = speed / 1.33f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        
     }
     void Update()
     {
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         //Interact
         if (Input.GetKeyDown(KeyCode.E))
         {
+            GetComponent<AudioManager>().Play("Grab");
             RaycastHit2D[] hit;
             RaycastHit2D hitFinal = new RaycastHit2D();
             float lowestDistance = 99;
@@ -94,7 +96,7 @@ public class Player : MonoBehaviour
         velocity.y = MoveY * speed;
 
         //Make diagnal speed lower 
-        if(velocity.x != 0 && velocity.y != 0 && !stopPlayer)
+        if (velocity.x != 0 && velocity.y != 0 && !stopPlayer)
         {
             speed = speedDiag;
         }
@@ -102,10 +104,11 @@ public class Player : MonoBehaviour
 
         rb.velocity = velocity;
 
-        //change directino facing
+        //change direction facing
         animator.SetFloat("xDir", rb.velocity.x);
         animator.SetFloat("yDir", rb.velocity.y);
-        animator.SetFloat("Up", rb.velocity.y);
+        //I kept getting an warning and I could not see my messages for my script
+        //animator.SetFloat("Up", rb.velocity.y);
     }
     public void ChangeDirectionX(int xDir)
     {
