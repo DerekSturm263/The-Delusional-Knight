@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     private DialogueManager dm;
     private CutsceneManager cm;
     private SpriteRenderer sp;
+    private ParticleSystem ps;
     private Vector3 directionFacing = new Vector3(0,-1,0);
     private float speedTemp;
     private float speedDiag;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sp = GetComponent<SpriteRenderer>();
+        ps = GetComponent<ParticleSystem>();
     }
     void Update()
     {
@@ -85,8 +87,14 @@ public class Player : MonoBehaviour
 
         if (new Vector2(MoveX, MoveY).magnitude != 0)
         {
-            ChangeDirectionX((int)MoveX);
-            ChangeDirectionY((int)MoveY);
+            ChangeDirectionX((int) MoveX);
+            ChangeDirectionY((int) MoveY);
+
+            if (ps.isStopped) ps.Play();
+        }
+        else
+        {
+            if (ps.isPlaying) ps.Stop();
         }
 
         if (stopPlayer)
