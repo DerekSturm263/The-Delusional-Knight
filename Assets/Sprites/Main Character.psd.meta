@@ -1,7 +1,139 @@
 fileFormatVersion: 2
 guid: 0b2e4c1f5a111524a8a4e040552b0db1
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -2324715518332284020
+    second: Main Character_0
+  - first:
+      213: 4616265382687001493
+    second: Main Character_1
+  - first:
+      213: -7599529441596946603
+    second: Main Character_2
+  - first:
+      213: 5637020899135582185
+    second: Main Character_3
+  - first:
+      213: 7089119549833840279
+    second: Main Character_4
+  - first:
+      213: -5145059400507163617
+    second: Main Character_5
+  - first:
+      213: 6632780320935879405
+    second: Main Character_6
+  - first:
+      213: 7855274914776717237
+    second: Main Character_7
+  - first:
+      213: 8372404247693859508
+    second: Main Character_8
+  - first:
+      213: 5524745695277153670
+    second: Main Character_9
+  - first:
+      213: 4431377938111044142
+    second: Main Character_10
+  - first:
+      213: 8506078548478707710
+    second: Main Character_11
+  - first:
+      213: -2279708345381380027
+    second: Main Character_12
+  - first:
+      213: 5663950450810411552
+    second: Main Character_13
+  - first:
+      213: 1721100857195622425
+    second: Main Character_14
+  - first:
+      213: -1026404591790012150
+    second: Main Character_15
+  - first:
+      213: -7625915369327466289
+    second: Main Character_16
+  - first:
+      213: -4987645880614909120
+    second: Main Character_17
+  - first:
+      213: -2693932475745424012
+    second: Main Character_18
+  - first:
+      213: 4619125205103449055
+    second: Main Character_19
+  - first:
+      213: 500110546830881719
+    second: Main Character_20
+  - first:
+      213: -4869412478801892762
+    second: Main Character_21
+  - first:
+      213: 1795804187100138018
+    second: Main Character_22
+  - first:
+      213: -3588852939147586594
+    second: Main Character_23
+  - first:
+      213: 852365973466256668
+    second: Main Character_24
+  - first:
+      213: -477942963440832951
+    second: Main Character_25
+  - first:
+      213: 2151031994618280157
+    second: Main Character_26
+  - first:
+      213: 6221298629500385360
+    second: Main Character_27
+  - first:
+      213: 6049427532137048918
+    second: Main Character_28
+  - first:
+      213: 7676880141197155514
+    second: Main Character_29
+  - first:
+      213: 7876188311417382058
+    second: Main Character_30
+  - first:
+      213: 7533580773927051117
+    second: Main Character_31
+  - first:
+      213: -2950059725395589643
+    second: Main Character_32
+  - first:
+      213: 5524491163266428387
+    second: Main Character_33
+  - first:
+      213: -6285596498143836472
+    second: Main Character_34
+  - first:
+      213: -1896429333308900906
+    second: Main Character_35
+  - first:
+      213: -8220763657795224152
+    second: Main Character_36
+  - first:
+      213: -6809243338249986165
+    second: Main Character_37
+  - first:
+      213: -1611790909404396983
+    second: Main Character_38
+  - first:
+      213: -4893890328561109483
+    second: Main Character_39
+  - first:
+      213: -2354401775094029003
+    second: Main Character_40
+  - first:
+      213: 5359464822332043353
+    second: Main Character_41
+  - first:
+      213: 5399736905459520114
+    second: Main Character_42
+  - first:
+      213: -6473782531662578650
+    second: Main Character_43
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
