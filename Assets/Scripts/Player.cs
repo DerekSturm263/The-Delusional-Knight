@@ -82,6 +82,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
 
@@ -107,8 +108,8 @@ public class Player : MonoBehaviour
         //change direction facing
         animator.SetFloat("xDir", rb.velocity.x);
         animator.SetFloat("yDir", rb.velocity.y);
-        //I kept getting an warning and I could not see my messages for my script
-        //animator.SetFloat("Up", rb.velocity.y);
+        //I kept getting an warning in console over this
+        animator.SetFloat("Up", rb.velocity.y);
     }
     public void ChangeDirectionX(int xDir)
     {
