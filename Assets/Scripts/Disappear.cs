@@ -105,8 +105,8 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Enter", false);
 
         torches.ForEach(x => x.SetActive(false));
-        spriteRenders.ForEach(x => x.enabled = false);
-        boxColliders.ForEach(x => x.enabled = false);
+        spriteRenders.ForEach(x => { try { x.enabled = false;  } catch { } });
+        boxColliders.ForEach(x => { try { x.enabled = false; } catch { } });
     }
 
     public void FadeIn()
@@ -115,7 +115,7 @@ public class Disappear : MonoBehaviour
         anim.SetBool("Exit", false);
 
         torches.ForEach(x => x.SetActive(true));
-        spriteRenders.ForEach(x => x.enabled = true);
-        boxColliders.ForEach(x => x.enabled = true);
+        spriteRenders.ForEach(x => { try { x.enabled = true; } catch { } });
+        boxColliders.ForEach(x => { try { x.enabled = true; } catch { } });
     }
 }

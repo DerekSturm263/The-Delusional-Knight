@@ -156,6 +156,12 @@ public class DialogueManager : MonoBehaviour
 		currentDialogueBG.GetComponent<Animator>().SetBool("Done", true);
 
 		if (action != null) action.Invoke();
+		StartCoroutine(Stop());
+	}
+	
+	private IEnumerator Stop()
+	{
+		yield return new WaitForSeconds(1f);
 		isDialoguing = false;
 	}
 

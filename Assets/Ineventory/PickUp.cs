@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class PickUp : Interactable
 {
+    private DialogueManager dm;
     private Inventroy inventory;
     public GameObject IteamButton;
+    public int dialogueNum;
 
-    private void Start()
+    private void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventroy>();
+    }
+
+    void Start()
+    {
+        dm = GameObject.FindObjectOfType<DialogueManager>();
     }
 
     protected override void Interact()
@@ -27,6 +34,11 @@ public class PickUp : Interactable
                 Destroy(gameObject);
                 break;
             }
+        }
+
+        if (dialogueNum != 0)
+        {
+            dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player);
         }
     }
 }

@@ -47,6 +47,7 @@ public class ItemInteractable : Interactable
                         int index = Inventroy.items.IndexOf(requiredItem);
                         foreach (Transform t in inventory.slots[index].GetComponentsInChildren<Transform>())
                         {
+                            inventory.isFull[index] = false;
                             if (t.gameObject != inventory.slots[index])
                                 Destroy(t.gameObject);
                         }
