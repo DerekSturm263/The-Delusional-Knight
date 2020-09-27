@@ -32,7 +32,7 @@ public class TestFOV : MonoBehaviour
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
-        //StartCoroutine("FindTargetsWithDelay", .2f);
+        StartCoroutine("FindTargetsWithDelay", .2f);
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -44,16 +44,23 @@ public class TestFOV : MonoBehaviour
         }
     }
 
+    IEnumerator WaitTime(float time, bool change)
+    {
+        yield return new WaitForSeconds(time);
+        change = false;
+    }
+
     private void Update()
     {
         pT = GameObject.FindGameObjectWithTag("Player").transform;
         DrawFieldOfView();
-        FindVisibleTargets();
+        //FindVisibleTargets();
         if(spotted)
         {
             GetComponent<AIControl>().playerSpotted = true;
+            //StartCoroutine(WaitTime(0.2f, spotted));
         }
-        else GetComponent<AIControl>().playerSpotted = false;
+        
     }
 
    
@@ -77,10 +84,7 @@ public class TestFOV : MonoBehaviour
                     visibleTargets.Add(target);
                     Debug.Log("player spotted");
                     spotted = true;
-                } else
-                {
-                    spotted = false;
-                }
+                } 
             }
         }
     }

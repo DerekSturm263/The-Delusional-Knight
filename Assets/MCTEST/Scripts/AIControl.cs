@@ -1,15 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 using Pathfinding;
 
 public class AIControl : MonoBehaviour
 {
     
-    Patrol patrol;
-    AIPath aiPath;
-    EnemyAI enemyAI;
-    TestFOV fov;
+    public AIPatrol patrol;
+    public AIPath aiPath;
+    public EnemyAI enemyAI;
+    public TestFOV fov;
+    public AIDestinationSetter dest;
 
     GameObject enemy, player;
 
@@ -18,35 +18,52 @@ public class AIControl : MonoBehaviour
 
     void Start()
     {
-        patrol = GetComponent<Patrol>();
+        patrol = GetComponent<AIPatrol>();
         aiPath = GetComponent<AIPath>();
         enemyAI = GetComponent<EnemyAI>();
         fov = GetComponent<TestFOV>();
+        dest = GetComponent<AIDestinationSetter>();
 
         enemy = gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
-
+        dest.target = player.transform;
 
     }
 
     
     void Update()
     {
-        if(playerSpotted)
+        dest.target = player.transform;
+        if (playerSpotted)
         {
-            enemyAI.enabled = true;
+            //enemyAI.enabled = true;
             patrol.enabled = false;
+            //aiPath.enabled = false;
+            dest.enabled = true;
+            if (Vector2.Distance(transform.position, player.transform.position) <= 0.75f && PlayerManager.grabbed == false)
+            {
+                PlayerManager.grabbed = true;
+                fov.spotted = false;
+                playerSpotted = false;
+            } 
+            else PlayerManager.grabbed = false;
         }
         else
         {
-            enemyAI.enabled = false;
+            //enemyAI.enabled = false;
             patrol.enabled = true;
+            //aiPath.enabled = true;
+            dest.enabled = false;
         }
-        if (Vector2.Distance(transform.position, player.transform.position) <= 0.75f)
+
+    }
+    IEnumerator Wait(float time, bool change)
+    {
+        if(change)
         {
-            player.transform.position = PlayerManager.lastCheckpoint;
-            PlayerManager.grabbed = true;
+            yield return new WaitForSeconds(time);
+            change = false;
         }
-        else PlayerManager.grabbed = false;
+
     }
 }
