@@ -5,11 +5,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private CutsceneManager cm;
+
     public Sprite playerHead;
     public Sprite witchHead;
     public Sprite guardHead;
     public Sprite princessHead;
     public Sprite kingHead;
+
+    public GameObject cutsceneLoc;
 
     private void Start()
     {
@@ -18,5 +22,8 @@ public class GameManager : MonoBehaviour
         Characters.guard.SetIcon(guardHead);
         Characters.princess.SetIcon(princessHead);
         Characters.king.SetIcon(kingHead);
+
+        cm = GameObject.FindGameObjectWithTag("CutsceneManager").GetComponent<CutsceneManager>();
+        cm.BeginCutscene(cutsceneLoc, "opening", "openingEnding", true);
     }
 }

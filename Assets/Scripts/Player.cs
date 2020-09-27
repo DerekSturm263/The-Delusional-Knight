@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private DialogueManager dm;
     private CutsceneManager cm;
+    private SpriteRenderer sp;
     private Vector3 directionFacing = new Vector3(0,-1,0);
     private float speedTemp;
     private float speedDiag;
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         speedTemp = speed; speedDiag = speed / 1.33f;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -81,6 +83,12 @@ public class Player : MonoBehaviour
         float MoveX = Input.GetAxisRaw("Horizontal");
         float MoveY = Input.GetAxisRaw("Vertical");
 
+        if (new Vector2(MoveX, MoveY).magnitude != 0)
+        {
+            ChangeDirectionX((int)MoveX);
+            ChangeDirectionY((int)MoveY);
+        }
+
         if (stopPlayer)
         {
             speed = 0;
@@ -101,6 +109,12 @@ public class Player : MonoBehaviour
         rb.velocity = velocity;
 
         //change directino facing
+
+        if (Mathf.Abs(rb.velocity.x) > 0f)
+        {
+            sp.flipX = (rb.velocity.x < 0f) ? true : false;
+        }
+
         animator.SetFloat("xDir", rb.velocity.x);
         animator.SetFloat("yDir", rb.velocity.y);
     }

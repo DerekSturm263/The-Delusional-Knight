@@ -31,7 +31,15 @@ public class Npc : Interactable
         {
             if (item == null)
             {
-                dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                if (!hasSpokenTo)
+                {
+                    dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                    hasSpokenTo = true;
+                }
+                else
+                {
+                    dm.WriteDialogue(AllDialogue.GetDialogueByID(alternateDialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                }
             }
             else
             {

@@ -16,6 +16,7 @@ public class SpecialDialogue : Interactable
     public GameObject reward;
     private bool hasSpokenTo;
     private bool content;
+    public bool isKing;
 
     private void Awake()
     {
@@ -33,6 +34,11 @@ public class SpecialDialogue : Interactable
 
         if (!dm.GetIsDialoguing())
         {
+            if (isKing)
+                HasItem.metCondition = true;
+            else
+                Delete.trigger = true;
+
             if (!hasSpokenTo)
             {
                 dm.WriteDialogue(AllDialogue.GetDialogueByID(dialogueNum), Characters.player, Characters.CharacterByName(npcName));
@@ -50,30 +56,34 @@ public class SpecialDialogue : Interactable
                         foreach (Transform t in inventory.slots[index].GetComponentsInChildren<Transform>())
                         {
                             inventory.isFull[index] = false;
+                            Inventroy.items.Remove(requiredItem);
                             if (t.gameObject != inventory.slots[index])
                                 Destroy(t.gameObject);
                         }
 
-                        for (int i = 0; i < inventory.slots.Length; i++)
+                        if (reward != null)
                         {
-                            if (inventory.isFull[i] == false)
+                            for (int i = 0; i < inventory.slots.Length; i++)
                             {
-                                // Item can be in inventory
-                                inventory.isFull[i] = true;
-                                Instantiate(reward, inventory.slots[i].transform, false);
-                                Inventroy.items.Add(reward);
-                                break;
+                                if (inventory.isFull[i] == false)
+                                {
+                                    // Item can be in inventory
+                                    inventory.isFull[i] = true;
+                                    Instantiate(reward, inventory.slots[i].transform, false);
+                                    Inventroy.items.Add(reward);
+                                    break;
+                                }
                             }
                         }
 
                         content = true;
+
+                        if (isKing)    PrincessDoor.isOpen = true;
                     }
 
                 }
                 else
                 {
-                    Debug.Log(content);
-
                     if (!content)
                         dm.WriteDialogue(AllDialogue.GetDialogueByID(repeatDialogue), Characters.player, Characters.CharacterByName(npcName));
                     else

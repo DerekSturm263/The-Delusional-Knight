@@ -1,0 +1,692 @@
+fileFormatVersion: 2
+guid: a7bec048ed81f0e489d4cdd9c238a03c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3140482217516476210
+    second: Princess_Walking_Anim_0
+  - first:
+      213: -8756638602187126965
+    second: Princess_Walking_Anim_1
+  - first:
+      213: 3725392778882504125
+    second: Princess_Walking_Anim_2
+  - first:
+      213: 5703544159172452198
+    second: Princess_Walking_Anim_3
+  - first:
+      213: -7425069491044077859
+    second: Princess_Walking_Anim_4
+  - first:
+      213: -7274350538351812652
+    second: Princess_Walking_Anim_5
+  - first:
+      213: -8620438800063053685
+    second: Princess_Walking_Anim_6
+  - first:
+      213: -524288412532977341
+    second: Princess_Walking_Anim_7
+  - first:
+      213: -3820087860284452327
+    second: Princess_Walking_Anim_8
+  - first:
+      213: -6716936057494718974
+    second: Princess_Walking_Anim_9
+  - first:
+      213: 8548883168775631324
+    second: Princess_Walking_Anim_10
+  - first:
+      213: -3125373316114050463
+    second: Princess_Walking_Anim_11
+  - first:
+      213: 6986909308809195563
+    second: Princess_Walking_Anim_12
+  - first:
+      213: -6837413997208993082
+    second: Princess_Walking_Anim_13
+  - first:
+      213: -2738742424847296664
+    second: Princess_Walking_Anim_14
+  - first:
+      213: 7180442436857718884
+    second: Princess_Walking_Anim_15
+  - first:
+      213: 697234487397175111
+    second: Princess_Walking_Anim_16
+  - first:
+      213: -7504898091370797777
+    second: Princess_Walking_Anim_17
+  - first:
+      213: -5669686116533412288
+    second: Princess_Walking_Anim_18
+  - first:
+      213: -2938600469184591384
+    second: Princess_Walking_Anim_19
+  - first:
+      213: 8589723601857517934
+    second: Princess_Walking_Anim_20
+  - first:
+      213: -5496790167598228319
+    second: Princess_Walking_Anim_21
+  - first:
+      213: 9111526799900949025
+    second: Princess_Walking_Anim_22
+  - first:
+      213: -4055235399043000777
+    second: Princess_Walking_Anim_23
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 30
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 249
+        width: 39
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec8df79ef04ca64d0800000000000000
+      internalID: -3140482217516476210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 249
+        width: 38
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47c922069b2a7680800000000000000
+      internalID: -8756638602187126965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 249
+        width: 38
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5d8129ef043b330800000000000000
+      internalID: 3725392778882504125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_3
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 249
+        width: 38
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f5a30b13f072f40800000000000000
+      internalID: 5703544159172452198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_4
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 249
+        width: 39
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dde2ab933aad4f890800000000000000
+      internalID: -7425069491044077859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 249
+        width: 38
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4df5eddf9b05c0b90800000000000000
+      internalID: -7274350538351812652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_6
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 249
+        width: 38
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b804f3a959c0e5880800000000000000
+      internalID: -8620438800063053685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_7
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 249
+        width: 38
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3415e13777a59b8f0800000000000000
+      internalID: -524288412532977341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91296fca4525cfac0800000000000000
+      internalID: -3820087860284452327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_9
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 206b30a5e36a8c2a0800000000000000
+      internalID: -6716936057494718974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_10
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd1ff25b2fbb3a670800000000000000
+      internalID: 8548883168775631324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_11
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1629986278170a4d0800000000000000
+      internalID: -3125373316114050463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_12
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2031758ffc76f060800000000000000
+      internalID: 6986909308809195563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_13
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2031a1230ac11a0800000000000000
+      internalID: -6837413997208993082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_14
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8675fab66480ef9d0800000000000000
+      internalID: -2738742424847296664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_15
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 126
+        width: 39
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4686b0b4a5e06a360800000000000000
+      internalID: 7180442436857718884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 4
+        width: 28
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74fc57a72131da900800000000000000
+      internalID: 697234487397175111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_17
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 4
+        width: 34
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f252654d2fe39d790800000000000000
+      internalID: -7504898091370797777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_18
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 4
+        width: 30
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04edf0c248a3151b0800000000000000
+      internalID: -5669686116533412288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_19
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 4
+        width: 34
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e9c471517ef737d0800000000000000
+      internalID: -2938600469184591384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_20
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 4
+        width: 28
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6991870b14d43770800000000000000
+      internalID: 8589723601857517934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_21
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 4
+        width: 34
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac927f377a77b3b0800000000000000
+      internalID: -5496790167598228319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_22
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 4
+        width: 30
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a3c8d7955a27e70800000000000000
+      internalID: 9111526799900949025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Princess_Walking_Anim_23
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 4
+        width: 34
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736d37fd3e8e8b7c0800000000000000
+      internalID: -4055235399043000777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

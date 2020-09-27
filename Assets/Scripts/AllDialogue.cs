@@ -18,6 +18,7 @@ public static class AllDialogue
     public static SpeechBubble needKey2 = new SpeechBubble(8, Characters.player, "It's locked.");
     public static SpeechBubble hasKey2 = new SpeechBubble(56, Characters.player, "Oh, a key. I can probably use this to get into the princess's room.");
     public static SpeechBubble needKey3 = new SpeechBubble(57, Characters.player, "Huh? I thought that would work. Was there anywhere else in the castle that was locked?");
+    public static SpeechBubble present = new SpeechBubble(87, Characters.player, "Oh! This is the king's present, isn't it?");
 
     // Memory 1.
     public static SpeechBubble flashback1A = new SpeechBubble(9, Characters.guard, "Dagon, did you hear what the townspeople have been saying?");
@@ -44,9 +45,13 @@ public static class AllDialogue
     public static SpeechBubble flashback3Over = new SpeechBubble(26, Characters.player, "What did she do to me? I need to see what this is all about!");
 
     // Witch conversation outside castle.
-    public static SpeechBubble convoWithWitch1 = new SpeechBubble(36, Characters.player, "What should I do first?");
-    public static SpeechBubble convoWithWitch2 = new SpeechBubble(37, Characters.witch, "You need to get inside the castle dum-dum.");
-    public static SpeechBubble convoWithWitch3 = new SpeechBubble(38, Characters.player, "Oh, right.");
+    public static SpeechBubble convoWithWitch1 = new SpeechBubble(36, Characters.witch, "What do you need to know?");
+    public static SpeechBubble convoWithWitch2 = new SpeechBubble(37, Characters.player, new List<string> { "What are the controls?", "What should I do first?", "Nothing." });
+    public static SpeechBubble convoWithWitch3 = new SpeechBubble(38, Characters.player, "What are the controls?");
+    public static SpeechBubble convoWithWitch4 = new SpeechBubble(88, Characters.player, "What should I do first?");
+    public static SpeechBubble convoWithWitch5 = new SpeechBubble(89, Characters.player, "Nothing. Goodbye.");
+    public static SpeechBubble convoWithWitch6 = new SpeechBubble(90, Characters.witch, "WASD or Arrow Keys to move. TAB to open your inventory. E to interact with items and people.");
+    public static SpeechBubble convoWithWitch7 = new SpeechBubble(91, Characters.witch, "First you need to get inside, then you should think about sneaking past those guards...");
 
     // Guard conversation in Break Room.
     public static SpeechBubble convoInBreakRoom = new SpeechBubble(27, Characters.guard, "I would capture you but I'm on break.");
@@ -93,6 +98,11 @@ public static class AllDialogue
     public static SpeechBubble convoInPrincessRoom9 = new SpeechBubble(68, Characters.princess, "What was that?");
     public static SpeechBubble convoInPrincessRoom10 = new SpeechBubble(69, Characters.player, "Nothing.");
 
+    public static SpeechBubble convoInPrincessRoom11 = new SpeechBubble(114, Characters.princess, "Get away from me!");
+    public static SpeechBubble convoInPrincessRoom12 = new SpeechBubble(115, Characters.player, "I'm sorry, your highness.");
+    public static SpeechBubble convoInPrincessRoom13 = new SpeechBubble(116, Characters.princess, "Sorry for wh-");
+    public static SpeechBubble convoInPrincessRoom14 = new SpeechBubble(117, Characters.player, "Okay, now that I have the princess I can finally leave the castle. Time to see Ingrid.");
+
     // King conversation in the Throne Room.
     public static SpeechBubble convoInThroneRoom = new SpeechBubble(70, Characters.player, "King Peter, I require your assistance.");
     public static SpeechBubble convoInThroneRoom2 = new SpeechBubble(71, Characters.player, "I need you to unlock the princess's bedroom so I may see her.");
@@ -103,11 +113,77 @@ public static class AllDialogue
     public static SpeechBubble convoInThroneRoom7 = new SpeechBubble(76, Characters.player, "Of course, anything my lord.");
     public static SpeechBubble convoInThroneRoom8 = new SpeechBubble(77, Characters.player, "No.");
     public static SpeechBubble convoInThroneRoom9 = new SpeechBubble(78, Characters.king, "Why, that was rude of you. Anyways, I will still ask you to help me.");
-    public static SpeechBubble convoInThroneRoom10 = new SpeechBubble(79, Characters.king, "I require some assistance. You see, I need ");
+    public static SpeechBubble convoInThroneRoom10 = new SpeechBubble(79, Characters.king, "I require some assistance. You see, tommorow is my daughter's birthday and I seem to have misplaced her present.");
+    public static SpeechBubble convoInThroneRoom11 = new SpeechBubble(80, Characters.king, "As you may know, she's the only family I have left. My wife left me, and I would just hate for anything to happen to my daughter.");
+    public static SpeechBubble convoInThroneRoom12 = new SpeechBubble(81, Characters.king, "Can you just look around some of the barrels to see if you can find it. I'm sure it's in one of them.");
+    public static SpeechBubble convoInThroneRoom13 = new SpeechBubble(82, Characters.king, "Thank you my fair knight. Bring me the gift and I will let you into the princess's room.");
+
+    public static SpeechBubble convoInThroneRoom14 = new SpeechBubble(83, Characters.king, "Thank you, Dagon! I was worried that I lost this forever.");
+    public static SpeechBubble convoInThroneRoom15 = new SpeechBubble(84, Characters.king, "As promised, I will now open the door to my daughter's room.");
+    public static SpeechBubble convoInThroneRoom18 = new SpeechBubble(118, Characters.king, "But first, please listen to my tale of woe.");
+    public static SpeechBubble convoInThroneRoom19 = new SpeechBubble(119, Characters.king, "Oh, I am a sorrowful fool! I am left alone with my daughter! Oh, my daughter, my beautiful daughter where would I be without you?");
+    public static SpeechBubble convoInThroneRoom20 = new SpeechBubble(120, Characters.king, "Ever since your mother has left me, you have been a strong woman. Say I wonder, where did my personal guard go to protect you?");
+
+    public static SpeechBubble convoInThroneRoom16 = new SpeechBubble(85, Characters.king, "Remember, I want you to find my daughter's present somewhere in the castle. I'm sure it's in one of the barrels.");
+    public static SpeechBubble convoInThroneRoom17 = new SpeechBubble(86, Characters.king, "Thanks again, now go to my daughter and do whatever it is you were going to do.");
+
+    // Opening dialogue.
+    public static SpeechBubble openingConvo = new SpeechBubble(92, Characters.witch, "Young knight, may I ask for your assistance?");
+    public static SpeechBubble openingConvo2 = new SpeechBubble(93, Characters.player, "What is it, fair maiden?");
+    public static SpeechBubble openingConvo3 = new SpeechBubble(94, Characters.witch, "It's about the princess. I want you to take her away from King Peter.");
+    public static SpeechBubble openingConvo4 = new SpeechBubble(95, Characters.player, "There's no way that I'd ever do that for you!");
+    public static SpeechBubble openingConvo5 = new SpeechBubble(96, Characters.witch, "You're going to kidnap the princess for me so that I can use her blood for my anti-aging potion.");
+    public static SpeechBubble openingConvo6 = new SpeechBubble(97, Characters.witch, "Hahahahahahahaha!");
+    public static SpeechBubble openingConvo7 = new SpeechBubble(98, Characters.player, "What's so funny? You know there's no way I'd do your bidding.");
+    public static SpeechBubble openingConvo8 = new SpeechBubble(99, Characters.witch, "We'll see about that! Take this!");
+    public static SpeechBubble openingConvo9 = new SpeechBubble(100, Characters.player, "Ah!");
+
+    public static SpeechBubble openingEnding = new SpeechBubble(101, Characters.player, "Huh? What's going on?");
+    public static SpeechBubble openingEnding2 = new SpeechBubble(102, Characters.player, "Where am I?");
+    public static SpeechBubble openingEnding3 = new SpeechBubble(103, Characters.player, "This looks like the castle. What am I doing here?");
+
+    public static SpeechBubble witchConvo1 = new SpeechBubble(104, Characters.player, "What am I doing here?");
+    public static SpeechBubble witchConvo2 = new SpeechBubble(105, Characters.witch, "Here, my friend, have this potion to clear your mind and tidy you up.");
+    public static SpeechBubble witchConvo3 = new SpeechBubble(106, Characters.player, "Thank you fair maiden.");
+    public static SpeechBubble witchConvo4 = new SpeechBubble(107, Characters.player, "Why am I here?");
+    public static SpeechBubble witchConvo5 = new SpeechBubble(108, Characters.witch, "You are a knight for King Peter and you must rescue the princess.");
+    public static SpeechBubble witchConvo6 = new SpeechBubble(109, Characters.witch, "King Peter has turned evil and can not be trusted. You must break into the castle to steal the princess.");
+    public static SpeechBubble witchConvo7 = new SpeechBubble(110, Characters.player, "Steal?");
+    public static SpeechBubble witchConvo8 = new SpeechBubble(111, Characters.witch, "From King Peter. The princess doesn't know it but she's in dire need of saving.");
+    public static SpeechBubble witchConvo9 = new SpeechBubble(112, Characters.player, "Really? Well, I guess I should go save her then. It's my duty as a knight to protect my people.");
+    public static SpeechBubble witchConvo10 = new SpeechBubble(113, Characters.witch, "Indeed. Haha... Talk to me if you have any questions.");
 
     public static void Initialize()
     {
-        #region Go Away
+        convoInPrincessRoom.SetLines(new List<SpeechBubble> { convoInPrincessRoom2 });
+        convoInPrincessRoom2.SetLines(new List<SpeechBubble> { convoInPrincessRoom3 });
+        convoInPrincessRoom3.SetLines(new List<SpeechBubble> { convoInPrincessRoom4 });
+        convoInPrincessRoom4.SetLines(new List<SpeechBubble> { convoInPrincessRoom5 });
+        convoInPrincessRoom5.SetLines(new List<SpeechBubble> { convoInPrincessRoom6 });
+        convoInPrincessRoom6.SetLines(new List<SpeechBubble> { convoInPrincessRoom7 });
+        convoInPrincessRoom7.SetLines(new List<SpeechBubble> { convoInPrincessRoom8 });
+        convoInPrincessRoom8.SetLines(new List<SpeechBubble> { convoInPrincessRoom9 });
+        convoInPrincessRoom9.SetLines(new List<SpeechBubble> { convoInPrincessRoom10 });
+        convoInPrincessRoom10.SetLines();
+        convoInPrincessRoom11.SetLines();
+        convoInPrincessRoom12.SetLines(new List<SpeechBubble> { convoInPrincessRoom13 });
+        convoInPrincessRoom13.SetLines(new List<SpeechBubble> { convoInPrincessRoom14 });
+        convoInPrincessRoom14.SetLines();
+
+        openingConvo.SetLines(new List<SpeechBubble> { openingConvo2 });
+        openingConvo2.SetLines(new List<SpeechBubble> { openingConvo3 });
+        openingConvo3.SetLines(new List<SpeechBubble> { openingConvo4 });
+        openingConvo4.SetLines(new List<SpeechBubble> { openingConvo5 });
+        openingConvo5.SetLines(new List<SpeechBubble> { openingConvo6 });
+        openingConvo6.SetLines(new List<SpeechBubble> { openingConvo7 });
+        openingConvo7.SetLines(new List<SpeechBubble> { openingConvo8 });
+        openingConvo8.SetLines(new List<SpeechBubble> { openingConvo9 });
+        openingConvo9.SetLines();
+
+        openingEnding.SetLines(new List<SpeechBubble> { openingEnding2 });
+        openingEnding2.SetLines(new List<SpeechBubble> { openingEnding3 });
+        openingEnding3.SetLines();
+
         memory.SetLines();
         bigDoor.SetLines();
         needKey.SetLines();
@@ -140,8 +216,12 @@ public static class AllDialogue
         flashback3Over.SetLines();
 
         convoWithWitch1.SetLines(new List<SpeechBubble> { convoWithWitch2 });
-        convoWithWitch2.SetLines(new List<SpeechBubble> { convoWithWitch3 });
-        convoWithWitch3.SetLines();
+        convoWithWitch2.SetLines(new List<SpeechBubble> { convoWithWitch3, convoWithWitch4, convoWithWitch5 });
+        convoWithWitch3.SetLines(new List<SpeechBubble> { convoWithWitch6 });
+        convoWithWitch4.SetLines(new List<SpeechBubble> { convoWithWitch7 });
+        convoWithWitch5.SetLines();
+        convoWithWitch6.SetLines(new List<SpeechBubble> { convoWithWitch1 });
+        convoWithWitch7.SetLines(new List<SpeechBubble> { convoWithWitch1 });
 
         convoInBreakRoom.SetLines(new List<SpeechBubble> { convoInBreakRoom2 });
         convoInBreakRoom2.SetLines(new List<SpeechBubble> { convoInBreakRoom3, convoInBreakRoom4, convoInBreakRoom5 });
@@ -152,8 +232,6 @@ public static class AllDialogue
         convoInBreakRoom8.SetLines(new List<SpeechBubble> { convoInBreakRoom2 });
         convoInBreakRoom9.SetLines(new List<SpeechBubble> { convoInBreakRoom10 });
         convoInBreakRoom10.SetLines(new List<SpeechBubble> { convoInBreakRoom2 });
-
-        #endregion
 
         convoInStorageRoom.SetLines(new List<SpeechBubble> { convoInStorageRoom2 });
         convoInStorageRoom2.SetLines(new List<SpeechBubble> { convoInStorageRoom3 });
@@ -178,6 +256,39 @@ public static class AllDialogue
 
         hasKey2.SetLines();
         needKey3.SetLines();
+        present.SetLines();
+
+        convoInThroneRoom.SetLines(new List<SpeechBubble> { convoInThroneRoom2 });
+        convoInThroneRoom2.SetLines(new List<SpeechBubble> { convoInThroneRoom3 });
+        convoInThroneRoom3.SetLines(new List<SpeechBubble> { convoInThroneRoom4 });
+        convoInThroneRoom4.SetLines(new List<SpeechBubble> { convoInThroneRoom5 });
+        convoInThroneRoom5.SetLines(new List<SpeechBubble> { convoInThroneRoom6 });
+        convoInThroneRoom6.SetLines(new List<SpeechBubble> { convoInThroneRoom7, convoInThroneRoom8 });
+        convoInThroneRoom7.SetLines(new List<SpeechBubble> { convoInThroneRoom10 });
+        convoInThroneRoom8.SetLines(new List<SpeechBubble> { convoInThroneRoom9 });
+        convoInThroneRoom9.SetLines(new List<SpeechBubble> { convoInThroneRoom10 });
+        convoInThroneRoom10.SetLines(new List<SpeechBubble> { convoInThroneRoom11 });
+        convoInThroneRoom11.SetLines(new List<SpeechBubble> { convoInThroneRoom12 });
+        convoInThroneRoom12.SetLines(new List<SpeechBubble> { convoInThroneRoom13 });
+        convoInThroneRoom13.SetLines();
+        convoInThroneRoom14.SetLines(new List<SpeechBubble> { convoInThroneRoom15 });
+        convoInThroneRoom15.SetLines(new List<SpeechBubble> { convoInThroneRoom18 });
+        convoInThroneRoom18.SetLines(new List<SpeechBubble> { convoInThroneRoom19 });
+        convoInThroneRoom19.SetLines(new List<SpeechBubble> { convoInThroneRoom20 });
+        convoInThroneRoom20.SetLines();
+        convoInThroneRoom16.SetLines();
+        convoInThroneRoom17.SetLines();
+
+        witchConvo1.SetLines(new List<SpeechBubble> { witchConvo2 });
+        witchConvo2.SetLines(new List<SpeechBubble> { witchConvo3 });
+        witchConvo3.SetLines(new List<SpeechBubble> { witchConvo4 });
+        witchConvo4.SetLines(new List<SpeechBubble> { witchConvo5 });
+        witchConvo5.SetLines(new List<SpeechBubble> { witchConvo6 });
+        witchConvo6.SetLines(new List<SpeechBubble> { witchConvo7 });
+        witchConvo7.SetLines(new List<SpeechBubble> { witchConvo8 });
+        witchConvo8.SetLines(new List<SpeechBubble> { witchConvo9 });
+        witchConvo9.SetLines(new List<SpeechBubble> { witchConvo10 });
+        witchConvo10.SetLines();
     }
 
     public static SpeechBubble GetDialogueByID(int num)

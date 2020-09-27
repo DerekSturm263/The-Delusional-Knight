@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class PrincessDoor : Interactable
 {
+    public static bool isOpen = false;
 
     private DialogueManager dm;
-    private Inventroy inventory;
 
     public GameObject requiredItem;
 
     public int noKeyDialogue;
     public int keyDialogue;
-
-    private void Awake()
-    {
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventroy>();
-    }
 
     void Start()
     {
@@ -38,5 +33,10 @@ public class PrincessDoor : Interactable
                 dm.WriteDialogue(AllDialogue.GetDialogueByID(noKeyDialogue), Characters.player);
             }
         }
+    }
+
+    private void Update()
+    {
+        if (isOpen) GetComponent<BoxCollider2D>().enabled = false;
     }
 }

@@ -110,20 +110,23 @@ public class DialogueManager : MonoBehaviour
 	// Used to advance dialogue that has no branches.
 	public void AdvanceDialogue()
 	{
-		if (currentDialogue.NextLines != null)
+		try
 		{
-			currentDialogue = currentDialogue.NextLines[0];
-			currentSpeaker = currentDialogue.Speaker;
+			if (currentDialogue.NextLines != null)
+			{
+				currentDialogue = currentDialogue.NextLines[0];
+				currentSpeaker = currentDialogue.Speaker;
 
-			if (currentDialogue.Responses.Count > 0)
-				StartCoroutine(WriteResponses(currentDialogue.Responses));
+				if (currentDialogue.Responses.Count > 0)
+					StartCoroutine(WriteResponses(currentDialogue.Responses));
+				else
+					StartCoroutine(Write(currentDialogue.Dialogue));
+			}
 			else
-				StartCoroutine(Write(currentDialogue.Dialogue));
-		}
-		else
-		{
-			StopDialogue();
-		}
+			{
+				StopDialogue();
+			}
+		} catch { }
 	}
 
 	// Used to advance dialogue that can branch with different options.

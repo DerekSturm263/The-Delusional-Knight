@@ -14,6 +14,18 @@ public static class AllCutscenes
         dm = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
         cm = GameObject.FindGameObjectWithTag("CutsceneManager").GetComponent<CutsceneManager>();
 
+        cutscenes.Add("opening", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.openingConvo, Characters.player, Characters.witch);
+            dm.SetEndOfDialogue(new Action(() => cm.EndCutscene()));
+        }));
+        cutscenes.Add("openingEnding", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.openingEnding, Characters.player);
+        }));
+
+
+
         cutscenes.Add("memory1", new Action( () =>
         {
             dm.WriteDialogue(AllDialogue.flashback1A, Characters.player, Characters.guard);
@@ -25,6 +37,7 @@ public static class AllCutscenes
         }));
 
 
+
         cutscenes.Add("memory2", new Action(() =>
         {
             dm.WriteDialogue(AllDialogue.flashback2A, Characters.player, Characters.king);
@@ -34,6 +47,7 @@ public static class AllCutscenes
         {
             dm.WriteDialogue(AllDialogue.flashback2Over, Characters.player);
         }));
+
 
 
         cutscenes.Add("memory3", new Action(() =>

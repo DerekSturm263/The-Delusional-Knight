@@ -32,7 +32,7 @@ public class CutsceneManager : MonoBehaviour
         return isInCutscene;
     }
 
-    public void BeginCutscene(GameObject cutsceneObj, string cutsceneName, string postCutsceneName)
+    public void BeginCutscene(GameObject cutsceneObj, string cutsceneName, string postCutsceneName, bool skipAH = false)
     {
         isInCutscene = true;
         cam = Camera.main;
@@ -44,15 +44,26 @@ public class CutsceneManager : MonoBehaviour
 
         flash.GetComponent<Animator>().speed = 1f;
         flash.SetActive(true);
-        dm.WriteDialogue(AllDialogue.memory, Characters.player);
 
-        dm.SetEndOfDialogue(() =>
+        if (!skipAH)
+        {
+            dm.WriteDialogue(AllDialogue.memory, Characters.player);
+
+            dm.SetEndOfDialogue(() =>
+            {
+                flash.GetComponent<Animator>().speed = 0.25f;
+                flash.SetActive(true);
+
+                Invoke("LoadObjects", 0.66f);
+            });
+        }
+        else
         {
             flash.GetComponent<Animator>().speed = 0.25f;
             flash.SetActive(true);
 
             Invoke("LoadObjects", 0.66f);
-        });
+        }
     }
 
     public void LoadObjects()
