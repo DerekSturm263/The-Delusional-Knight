@@ -153,14 +153,42 @@ public static class AllDialogue
     public static SpeechBubble witchConvo9 = new SpeechBubble(112, Characters.player, "Really? Well, I guess I should go save her then. It's my duty as a knight to protect my people.");
     public static SpeechBubble witchConvo10 = new SpeechBubble(113, Characters.witch, "Indeed. Haha... Talk to me if you have any questions.");
 
-    public static SpeechBubble finalConvoWithWitch = new SpeechBubble(114, Characters.witch, "Ah, my fair knight. I'm so glad you have arrived.");
-    public static SpeechBubble finalConvoWithWitch2 = new SpeechBubble(115, Characters.witch, "I see that you have the princess with you. Nicely done.");
-    public static SpeechBubble finalConvoWithWitch3 = new SpeechBubble(116, Characters.witch, "She's now safe from that evil-");
-    public static SpeechBubble finalConvoWithWitch4 = new SpeechBubble(117, Characters.player, "No! I know who you are, I know what you did! There's no way I'm handing th princess over to you now!");
-    public static SpeechBubble finalConvoWithWitch5 = new SpeechBubble(118, Characters.player, "");
+    public static SpeechBubble finalConvoWithWitch = new SpeechBubble(121, Characters.witch, "Ah, my fair knight. I'm so glad you have arrived.");
+    public static SpeechBubble finalConvoWithWitch2 = new SpeechBubble(122, Characters.witch, "I see that you have the princess with you. Nicely done.");
+    public static SpeechBubble finalConvoWithWitch3 = new SpeechBubble(123, Characters.witch, "She's now safe from that evil-");
+    public static SpeechBubble finalConvoWithWitch4 = new SpeechBubble(124, Characters.player, "No! I know who you are, I know what you did! There's no way I'm handing the princess over to you now!");
+    public static SpeechBubble finalConvoWithWitch5 = new SpeechBubble(125, Characters.witch, "What? What do you mean you know what I did? I didn't do anything to you or the princess.");
+    public static SpeechBubble finalConvoWithWitch6 = new SpeechBubble(126, Characters.player, "I remembered what you did to me to make me forget that I was a knight and that I was supposed to protect the princess.");
+    public static SpeechBubble finalConvoWithWitch7 = new SpeechBubble(127, Characters.witch, "Well, it's not like it matters anyway. The important thing is that she's here. You still brought the princess to me!");
+    public static SpeechBubble finalConvoWithWitch8 = new SpeechBubble(128, Characters.player, "No harm shall come to her while I stand watch!");
+    public static SpeechBubble finalConvoWithWitch9 = new SpeechBubble(129, Characters.witch, "Oh really? Come now dearest princess and I shall take you to my lair.");
+    public static SpeechBubble finalConvoWithWitch10 = new SpeechBubble(130, Characters.witch, "*Snatch*");
+    public static SpeechBubble finalConvoWithWitch11 = new SpeechBubble(131, Characters.witch, "Goodbye, Dagon. I do hope we meet again. Although, you may not recognize me.");
+    public static SpeechBubble finalConvoWithWitch12 = new SpeechBubble(132, Characters.witch, "Hahahahahahahahaha!");
+
+    public static SpeechBubble ending = new SpeechBubble(133, Characters.player, "Oh no! What will I do now, Victoria and Ingrid are both gone!");
+    public static SpeechBubble ending2 = new SpeechBubble(134, Characters.player, "This is really really bad...");
+    public static SpeechBubble ending3 = new SpeechBubble(135, Characters.player, "I will get you next time Ingrid, and I will rescue you Princess Victoria!!!");
 
     public static void Initialize()
     {
+        finalConvoWithWitch.SetLines(new List<SpeechBubble> { finalConvoWithWitch2 });
+        finalConvoWithWitch2.SetLines(new List<SpeechBubble> { finalConvoWithWitch3 });
+        finalConvoWithWitch3.SetLines(new List<SpeechBubble> { finalConvoWithWitch4 });
+        finalConvoWithWitch4.SetLines(new List<SpeechBubble> { finalConvoWithWitch5 });
+        finalConvoWithWitch5.SetLines(new List<SpeechBubble> { finalConvoWithWitch6 });
+        finalConvoWithWitch6.SetLines(new List<SpeechBubble> { finalConvoWithWitch7 });
+        finalConvoWithWitch7.SetLines(new List<SpeechBubble> { finalConvoWithWitch8 });
+        finalConvoWithWitch8.SetLines(new List<SpeechBubble> { finalConvoWithWitch9 });
+        finalConvoWithWitch9.SetLines(new List<SpeechBubble> { finalConvoWithWitch10 });
+        finalConvoWithWitch10.SetLines(new List<SpeechBubble> { finalConvoWithWitch11 });
+        finalConvoWithWitch11.SetLines(new List<SpeechBubble> { finalConvoWithWitch12 });
+        finalConvoWithWitch12.SetLines(new List<SpeechBubble> { ending });
+
+        ending.SetLines(new List<SpeechBubble> { ending2 });
+        ending2.SetLines(new List<SpeechBubble> { ending3 });
+        ending2.SetLines();
+
         convoInPrincessRoom.SetLines(new List<SpeechBubble> { convoInPrincessRoom2 });
         convoInPrincessRoom2.SetLines(new List<SpeechBubble> { convoInPrincessRoom3 });
         convoInPrincessRoom3.SetLines(new List<SpeechBubble> { convoInPrincessRoom4 });

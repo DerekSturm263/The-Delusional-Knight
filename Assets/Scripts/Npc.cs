@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Npc : Interactable
 {
@@ -33,6 +34,10 @@ public class Npc : Interactable
             if (GameManager.canViewFinalCutscene)
             {
                 dm.WriteDialogue(AllDialogue.GetDialogueByID(finalDialogueNum), Characters.player, Characters.CharacterByName(npcName));
+                dm.SetEndOfDialogue(() =>
+                {
+                    SceneManager.LoadScene("Credits");
+                });
             }
             else
             {
