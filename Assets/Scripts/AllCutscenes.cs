@@ -14,17 +14,36 @@ public static class AllCutscenes
         dm = GameObject.FindGameObjectWithTag("DialogueManager").GetComponent<DialogueManager>();
         cm = GameObject.FindGameObjectWithTag("CutsceneManager").GetComponent<CutsceneManager>();
 
-        // Example for how to make cutscene.
-        /*
         cutscenes.Add("memory1", new Action( () =>
         {
-            dm.WriteDialogue(AllDialogue.flashback1a, Characters.player, Characters.witch);
+            dm.WriteDialogue(AllDialogue.flashback1A, Characters.player, Characters.guard);
             dm.SetEndOfDialogue(new Action( () => cm.EndCutscene()));
         }));
         cutscenes.Add("memory1Ending", new Action(() =>
         {
-            dm.WriteDialogue(AllDialogue.flashback1Ending, Characters.player);
+            dm.WriteDialogue(AllDialogue.flashback1Over, Characters.player);
         }));
-        */
+
+
+        cutscenes.Add("memory2", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashback2A, Characters.player, Characters.king);
+            dm.SetEndOfDialogue(new Action(() => cm.EndCutscene()));
+        }));
+        cutscenes.Add("memory2Ending", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashback2Over, Characters.player);
+        }));
+
+
+        cutscenes.Add("memory3", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashback3A, Characters.player, Characters.witch);
+            dm.SetEndOfDialogue(new Action(() => cm.EndCutscene()));
+        }));
+        cutscenes.Add("memory3Ending", new Action(() =>
+        {
+            dm.WriteDialogue(AllDialogue.flashback3Over, Characters.player);
+        }));
     }
 }

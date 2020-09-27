@@ -2,26 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
+using System.Linq;
 
 public class Disappear : MonoBehaviour
 {
+    public enum Floor
+    {
+        Outside, One, Two
+    }
+    public Floor thisFloor;
+
     public enum Room
     {
-        Outside, Outer_Ring, Guards_Room, Kitchen, Throne_Room, Storage_Room, Kings_Room, Princess_Room, Outer_Room_2
+        Outside, Outer_Ring, Guards_Room, Kitchen, Throne_Room, Storage_Room, Kings_Room, Princess_Room, Outer_Room_2, Break_Room
     }
+    public Room thisRoom;
+
+    private static Floor currentFloor = Floor.One;
+
     private static Room currentRoom;
     private static Room oldRoom;
 
     public static Dictionary<Room, Disappear> rooms = new Dictionary<Room, Disappear>();
 
     private Animator anim;
-    public Room thisRoom;
     public string roomName;
     public bool startsVisible;
 
     public TMPro.TMP_Text roomNameGUI;
 
     public List<GameObject> torches;
+
+    public List<TilemapCollider2D> colliders;
+
+    public GameObject floorCollider;
 
     private void Awake()
     {
@@ -32,6 +47,7 @@ public class Disappear : MonoBehaviour
         {
             torches.Add(ps.gameObject);
         }
+        colliders = GetComponentsInChildren<TilemapCollider2D>().ToList();
 
         if (!rooms.ContainsKey(thisRoom))
             rooms.Add(thisRoom, this);
@@ -47,11 +63,16 @@ public class Disappear : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
-            ChangeRoom();
+            ChangeRoom(col);
     }
 
-    private void ChangeRoom()
+    private void ChangeRoom(Collider2D col)
     {
+        if (thisFloor != currentFloor && col.gameObject.transform.position.y < 38f)
+            return;
+
+        currentFloor = thisFloor;
+
         oldRoom = currentRoom;
         currentRoom = thisRoom;
 
@@ -62,6 +83,12 @@ public class Disappear : MonoBehaviour
 
         roomNameGUI.gameObject.SetActive(true);
         roomNameGUI.text = rooms[currentRoom].roomName;
+
+        if (floorCollider != null && rooms[oldRoom].floorCollider != null)
+        {
+            floorCollider.SetActive(true);
+            rooms[oldRoom].floorCollider.SetActive(false);
+        }
 
         rooms[currentRoom].FadeIn();
         rooms[oldRoom].FadeOut();

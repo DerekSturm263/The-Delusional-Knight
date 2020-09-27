@@ -43,7 +43,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: f5aff37e28e910c45a4b8124f144695e, type: 3}
     - {fileID: 2800000, guid: ea445cdfca335684baa3a3ff3c53cedf, type: 3}
     - {fileID: 2800000, guid: 1049542e48a690747a116006d4b82415, type: 3}
-    totalSpriteSurfaceArea: 209424
+    - {fileID: 2800000, guid: 3f086d96b5093f841954037a9e28bdaf, type: 3}
+    totalSpriteSurfaceArea: 211832
     bindAsDefault: 1
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
@@ -55,6 +56,8 @@ SpriteAtlas:
   - {fileID: 6990742791997637695, guid: 31502c34e8d2d8f40bd172c1e4e1e03f, type: 3}
   - {fileID: 4666168130798563010, guid: 31502c34e8d2d8f40bd172c1e4e1e03f, type: 3}
   - {fileID: 21300000, guid: 2e06ae25f557e4f46bedbe5e20f0c619, type: 3}
+  - {fileID: -1229422715903603370, guid: 3f086d96b5093f841954037a9e28bdaf, type: 3}
+  - {fileID: 4968204282139865449, guid: 3f086d96b5093f841954037a9e28bdaf, type: 3}
   - {fileID: 21300000, guid: b47038288a0c32649b7664f73acec0ce, type: 3}
   - {fileID: -5858471790780216811, guid: e81b8709253b8e649b8a44ace1ef163b, type: 3}
   - {fileID: 8910609792145962475, guid: e81b8709253b8e649b8a44ace1ef163b, type: 3}
@@ -101,6 +104,8 @@ SpriteAtlas:
   - stairs_tilemap_1
   - stairs_tilemap_0
   - grass_2
+  - Barrel_tile_map_0
+  - Barrel_tile_map_1
   - wood_7
   - Rug_tile_map_0
   - Rug_tile_map_1
