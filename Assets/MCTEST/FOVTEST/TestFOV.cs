@@ -27,8 +27,7 @@ public class TestFOV : MonoBehaviour
 
     private void Start()
     {
-        targetMask = 14;
-        obstacleMask = 15;
+
         
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
@@ -71,6 +70,7 @@ public class TestFOV : MonoBehaviour
                 if(!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
+                    Debug.Log("player spotted");
                     spotted = true;
                 } else
                 {
