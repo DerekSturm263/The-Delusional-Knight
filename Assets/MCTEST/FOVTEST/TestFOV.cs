@@ -49,6 +49,11 @@ public class TestFOV : MonoBehaviour
         pT = GameObject.FindGameObjectWithTag("Player").transform;
         DrawFieldOfView();
         FindVisibleTargets();
+        if(spotted)
+        {
+            GetComponent<AIControl>().playerSpotted = true;
+        }
+        else GetComponent<AIControl>().playerSpotted = false;
     }
 
    
@@ -60,7 +65,7 @@ public class TestFOV : MonoBehaviour
         //ALL ENEMIES REQUIRE COLLIDERS FOR THIS TO WORK!!!!
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
         //This Finds Enemies in the FOV Area- isnt visualized yet, but math wise its there
-        for(int i = 0; i <targetsInViewRadius.Length; i++)
+        for(int i = 0; i < targetsInViewRadius.Length; i++)
         {
             target = targetsInViewRadius[i].transform; //targets transform (player)
             Vector2 dirToTarget = (target.position - transform.position).normalized;

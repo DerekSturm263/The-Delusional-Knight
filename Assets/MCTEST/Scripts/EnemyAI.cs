@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : VersionedMonoBehaviour
 {
 
     public Transform target;
